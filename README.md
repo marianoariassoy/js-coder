@@ -1,1 +1,1 @@
-# js-coder
+# JS Coderhouse
