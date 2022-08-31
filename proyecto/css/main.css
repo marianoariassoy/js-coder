@@ -1,0 +1,124 @@
+@charset "utf-8";
+
+@font-face {
+  font-family: "Monserrat";
+  src: url("../fonts/Montserrat-VariableFont_wght.ttf") format("truetype");
+}
+
+:root {
+  --color-primary: #17fd85;
+  --color-secondary: #ea088c;
+
+  --metric-box-spacing: 50px;
+}
+
+html,
+body {
+  color: white;
+  font-family: "Monserrat";
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Text */
+
+h1 {
+  font-size: 2rem;
+  font-weight: 900;
+}
+p {
+  line-height: 1.4;
+}
+strong {
+  font-weight: 700;
+}
+
+small {
+  font-size: 0.8rem;
+}
+
+.text-center {
+  text-align: center;
+}
+.text-right {
+  text-align: right;
+}
+.text-justify {
+  text-align: justify;
+}
+
+/* Links */
+
+a,
+button,
+a:hover,
+button:hover {
+  transition: all 0.2s ease;
+}
+a:hover {
+  color: var(--color-primary);
+}
+
+/* Colors */
+
+.text-white {
+  color: white;
+}
+.text-primary {
+  color: var(--color-primary);
+}
+.text-secondary {
+  color: var(--color-secondary);
+}
+.bg-primary {
+  background-color: var(--color-primary);
+}
+.bg-secondary {
+  background-color: var(--color-secondary);
+}
+
+/* Spacing */
+
+.p-1 {
+  padding: var(--metric-box-spacing);
+}
+.p-2 {
+  padding: 40px;
+}
+.mb-1 {
+  margin-bottom: 1rem;
+}
+.mb-2 {
+  margin-bottom: 2rem;
+}
+
+/* Container */
+
+main {
+  min-block-size: calc(100vh - 8em);
+}
+
+.container {
+  width: 100%;
+  max-width: 1080px;
+  margin: 0 auto;
+  padding: 0 var(--metric-box-spacing);
+}
+
+/* Flex y Grid */
+
+.super-centered {
+  display: grid;
+  place-items: center;
+}
+.cards-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(15em, 1fr));
+  grid-gap: var(--metric-box-spacing);
+}
+
+/* Decoration */
+
+.hide {
+  display: none;
+}
