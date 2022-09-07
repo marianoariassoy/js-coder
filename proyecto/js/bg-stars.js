@@ -40,3 +40,5 @@ animate = () => {
   }
 };
 animate();
+
+const array = [55];

@@ -71,6 +71,7 @@ while (seleccion.toLowerCase() != "fin") {
       producto = marte.nombre;
       costoTotal += marte.precio;
       break;
+      g;
     case "5":
       producto = jupiter.nombre;
       costoTotal += jupiter.precio;

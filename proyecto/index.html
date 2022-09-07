@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Shoplar System</title>
+    <title>Buy Planets and Stars</title>
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
@@ -14,15 +14,13 @@
     />
     <link rel="stylesheet" href="./css/reset.css" />
     <link rel="stylesheet" href="./css/main.css" />
-    <link rel="stylesheet" href="./css/nav-menu.css" />
     <link rel="stylesheet" href="./css/style.css" />
     <link rel="stylesheet" href="./css/mobile.css" />
-    <link rel="stylesheet" href="./css/effects.css" />
   </head>
   <body>
     <header>
       <div class="menu">
-        <a href="#" class="text-white"><strong>MENU</strong> </a>
+        <a href="#" class="text-white"><strong>MENU</strong></a>
       </div>
       <div class="text-center">
         <h1 class="logo">Buy Planets and Stars</h1>
@@ -37,7 +35,9 @@
         </nav>
       </div>
 
-      <div class="cart"><i class="fa-solid fa-cart-shopping fa-lg"></i> 0</div>
+      <div class="cart">
+        <a href="#" class="text-white"><strong>CART</strong></a>
+      </div>
     </header>
     <main>
       <section class="container">
@@ -108,7 +108,7 @@
             </div>
           </article>
           <article class="card">
-            <img src="./assets/saturn.png" width="400" height="400" alt="Saturn" loading="lazy" class="mb-1" />
+            <img src="./assets/jupiter.png" width="400" height="400" alt="Saturn" loading="lazy" class="mb-1" />
             <div class="content">
               <p class="mb-1">
                 <span class="card-title">Saturn</span>
@@ -169,7 +169,18 @@
           </div>
           <div class="cart-item">
             <div class="cart-img">
-              <img src="https://tailwindui.com/img/ecommerce-images/product-page-01-related-product-01.jpg" alt="" />
+              <img src="./assets/jupiter.png" alt="" />
+            </div>
+            <div class="cart-title">
+              <small>Mercurio<br />$1400</small>
+            </div>
+            <div class="cart-delete text-right">
+              <a href="#"> <i class="fa-solid fa-xmark"></i></a>
+            </div>
+          </div>
+          <div class="cart-item">
+            <div class="cart-img">
+              <img src="./assets/jupiter.png" alt="" />
             </div>
             <div class="cart-title">
               <small>Planet Earth<br />$1400</small>
@@ -180,18 +191,7 @@
           </div>
           <div class="cart-item">
             <div class="cart-img">
-              <img src="https://tailwindui.com/img/ecommerce-images/product-page-01-related-product-01.jpg" alt="" />
-            </div>
-            <div class="cart-title">
-              <small>Planet Earth<br />$1400</small>
-            </div>
-            <div class="cart-delete text-right">
-              <a href="#"> <i class="fa-solid fa-xmark"></i></a>
-            </div>
-          </div>
-          <div class="cart-item">
-            <div class="cart-img">
-              <img src="https://tailwindui.com/img/ecommerce-images/product-page-01-related-product-01.jpg" alt="" />
+              <img src="./assets/jupiter.png" alt="" />
             </div>
             <div class="cart-title">
               <small>Planet Earth<br />$1400</small>
@@ -202,10 +202,18 @@
           </div>
         </div>
         <div class="cart-footer">
-          <div class="cart-total">
+          <div class="cart-subtotal">
             <div>Total:</div>
+            <div class="text-right">$1240</div>
+          </div>
+          <div class="cart-subtotal">
+            <div>Shiping:</div>
+            <div class="text-right">$400</div>
+          </div>
+          <div class="cart-total">
+            <div>Final:</div>
             <div class="text-right">
-              $13000.- <br />
+              $13000 <br />
               <small>12 cuotas de $1200</small>
             </div>
           </div>

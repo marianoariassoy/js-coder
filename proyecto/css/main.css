@@ -8,7 +8,6 @@
 :root {
   --color-primary: #17fd85;
   --color-secondary: #ea088c;
-
   --metric-box-spacing: 50px;
 }
 
@@ -16,25 +15,26 @@ html,
 body {
   color: white;
   font-family: "Monserrat";
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+  font-variation-settings: "wght" 400;
 }
 
 /* Text */
 
 h1 {
   font-size: 2rem;
-  font-weight: 900;
+  font-variation-settings: "wght" 700;
 }
 p {
   line-height: 1.4;
 }
 strong {
-  font-weight: 700;
+  font-weight: normal;
+  font-variation-settings: "wght" 700;
 }
 
 small {
   font-size: 0.8rem;
+  line-height: 1.5;
 }
 
 .text-center {
