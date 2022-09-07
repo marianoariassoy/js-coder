@@ -38,7 +38,7 @@ const finalizarCompra = () => {
   for (const iterator of productosCarrito) {
     pedidoFinal += iterator.nombre + ", ";
   }
-  alert(`Finalizaste tu compra con los siguientes productos: ${pedidoFinal}`);
+  alert(`Finalizaste tu compra con los siguientes productos: ${pedidoFinal.slice(0, -2)}`);
 
   //Envio gratuito
   if (costoTotal > envioGratuitoMinimo) {
