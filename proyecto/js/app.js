@@ -80,7 +80,9 @@ for (let index = 1; index < stock.length; index++) {
 while (seleccion != "fin") {
   seleccion = prompt(`¡Hola!👋 Selecciona un número y agregá productos al carrito de compras. Ingresá 'FIN' para finalizar la compra 🙌\n\n${listadoProductos} `);
 
-  if (seleccion.toLowerCase() === "fin") {
+  seleccion = seleccion.trim().toLowerCase();
+
+  if (seleccion === "fin") {
     finalizarCompra();
   } else if (parseInt(seleccion) >= 1 && parseInt(seleccion) < stock.length) {
     productosCarrito.push(new Producto(stock[seleccion].id, stock[seleccion].nombre, stock[seleccion].precio, 1));
