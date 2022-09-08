@@ -85,7 +85,7 @@ while (seleccion != "fin") {
   if (seleccion === "fin") {
     finalizarCompra();
   } else if (parseInt(seleccion) >= 1 && parseInt(seleccion) < stock.length) {
-    let cantidad = prompt(`Ingresa la cantidad`);
+    let cantidad = prompt(`Ingresa la cantidad de ${stock[seleccion].nombre}`);
     let precio = stock[seleccion].precio * cantidad;
     productosCarrito.push(new Producto(stock[seleccion].id, stock[seleccion].nombre, precio, cantidad));
     alert(`👉 Agregaste ${cantidad} ${stock[seleccion].nombre} a tu carrito de compras`);
