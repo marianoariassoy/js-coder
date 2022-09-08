@@ -1,65 +1,67 @@
 // Simulador interactivo de carrito de compras
 
+// Variables globales
+let costoEnvio = 500;
+let envioGratuitoMinimo = 5000;
+let iva = 0.28;
+let seleccion = "";
+let listadoProductos = "";
+
 //Clase Producto
 class Producto {
-  constructor(id, nombre, precio, stock) {
-    this.id = id;
-    this.nombre = nombre;
-    this.precio = parseInt(precio);
-    this.stock = parseInt(stock);
-    this.disponible = true;
-  }
-}
-//Clase Carrito
-class Carrito {
   constructor(id, nombre, precio, cantidad) {
     this.id = id;
     this.nombre = nombre;
-    this.precio = parseInt(precio);
-    this.cantidad = parseInt(cantidad);
+    this.precio = precio;
+    this.cantidad = cantidad;
+    this.disponible = true;
   }
 }
 
-// Array de productos de la clase Producto y carrito
+// Array de productos y carrito
 const productos = [];
 const productosCarrito = [];
 
 // Agrego productos al listado
-productos.push(new Producto(1, "Mercurio", 500, 10));
+productos.push(new Producto(1, "Mercurio", 100, 10));
 productos.push(new Producto(2, "Venus", 2500, 10));
-productos.push(new Producto(3, "Tierra", 800, 5));
-productos.push(new Producto(4, "Marte", 200, 4));
-productos.push(new Producto(5, "Jupiter", 200, 10));
+productos.push(new Producto(3, "Tierra", 1000, 5));
+productos.push(new Producto(4, "Marte", 500, 4));
+productos.push(new Producto(5, "Jupiter", 500, 10));
 
 // Finalizar la compra
 const finalizarCompra = () => {
   //resumen
   let pedidoFinal = "";
   for (const iterator of productosCarrito) {
-    pedidoFinal += iterator.nombre + ", ";
+    pedidoFinal += iterator.nombre + "\n";
   }
-  alert(`Finalizaste tu compra con los siguientes productos: ${pedidoFinal.slice(0, -2)}`);
+  alert(`Finalizaste tu compra con los siguientes productos:\n${pedidoFinal}`);
 
-  //Envio gratuito
-  if (costoTotal > envioGratuitoMinimo) {
+  let subTotal = productosCarrito.reduce((acc, item) => {
+    return acc + item.precio;
+  }, 0);
+
+  //Envio
+  if (subTotal > envioGratuitoMinimo) {
     alert(`¡Bien! Tu compra tiene envio gratuito, supera los $${envioGratuitoMinimo}.-`);
     costoEnvio = 0;
-  } else alert(`Tu compra tiene un costo de envio de $${costoEnvio}.-, no superaste los $${envioGratuitoMinimo}.- para tener envio gratuito`);
+  } else
+    alert(`Tu compra tiene un costo de envio de $${costoEnvio}.-. 
+No superaste los $${envioGratuitoMinimo}.- para obtener envio gratuito`);
 
-  //Costo final
-  costoTotal += costoEnvio;
-  let ivaFinal = Math.round(costoTotal * iva);
-  costoTotal += ivaFinal;
-  alert(`El costo final de tu compra es $${costoTotal}.-\n($${costoEnvio}.- costo de envio)\n($${ivaFinal}.- IVA)\n¡Gracias por tu compra!`);
+  //Costo final e impuestos
+  let costofinal = subTotal + costoEnvio;
+  let ivaFinal = Math.round(subTotal * iva);
+  costofinal += ivaFinal;
+  alert(`El subtotal de la compra es: $${subTotal}.-
+Costo de envio: $${costoEnvio}.-
+Impuestos: $${ivaFinal}.-
+
+El costo final de tu compra es $${costofinal}.-
+
+¡Muchas gracias!`);
 };
-
-// Variables globales
-let costoTotal = 0;
-let costoEnvio = 500;
-let envioGratuitoMinimo = 5000;
-let iva = 0.28;
-let seleccion = "";
-let listadoProductos = "";
 
 // String con el listado para mostrar
 for (let index = 0; index < productos.length; index++) {
@@ -75,10 +77,9 @@ while (seleccion != "fin") {
     finalizarCompra();
   } else if (parseInt(seleccion) >= 1 && parseInt(seleccion) <= productos.length) {
     seleccion--;
-    productosCarrito.push(new Carrito(productos[seleccion].id, productos[seleccion].nombre, productos[seleccion].precio, 1));
-    costoTotal += productos[seleccion].precio;
+    productosCarrito.push(new Producto(productos[seleccion].id, productos[seleccion].nombre, productos[seleccion].precio, 1));
 
-    alert(`Agregaste ${productos[seleccion].nombre} a tu carrito`);
+    alert(`Agregaste ${productos[seleccion].nombre} a tu carrito de compras`);
   } else {
     alert(`No ingresaste una opción valida`);
   }
