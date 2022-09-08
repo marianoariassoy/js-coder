@@ -78,7 +78,7 @@ for (let index = 1; index < productosDisponibles.length; index++) {
 
 // Selección de productos
 while (seleccion != "fin") {
-  seleccion = prompt(`¡Hola! Selecciona y agreguá' productos a tu carrito de compras.\nIngresá 'FIN' para finalizar la compra.\n\n${listadoProductos} `);
+  seleccion = prompt(`¡Hola! Selecciona un número y agregá productos al carrito de compras.\nIngresá 'FIN' para finalizar la compra.\n\n${listadoProductos} `);
 
   if (seleccion.toLowerCase() === "fin") {
     finalizarCompra();
