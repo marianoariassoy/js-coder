@@ -45,7 +45,7 @@ const finalizarCompra = () => {
 
   //Envio
   if (subTotal >= envioGratuitoMinimo) {
-    alert(`¡Bien! 🎉 Tu compra tiene envio gratuito, supera o es igual a $${envioGratuitoMinimo}.-`);
+    alert(`🎉 Tu compra tiene envio gratuito, supera o es igual a $${envioGratuitoMinimo}.-`);
     costoEnvio = 0;
   } else
     alert(`Tu compra tiene un costo de envio de $${costoEnvio}.-. 
@@ -68,12 +68,12 @@ let seleccion = "";
 let listadoProductos = "";
 
 // Filtro los productos para mostrar solo los disponibles.
-const productosDisponibles = productos.filter((item) => item.cantidad > 0);
+const stock = productos.filter((item) => item.cantidad > 0);
 // Agrego un item vácio al comienzo del array así comenzamos desde el indice 1
-productosDisponibles.unshift([]);
+stock.unshift([]);
 // Creo un String para el menu.
-for (let index = 1; index < productosDisponibles.length; index++) {
-  listadoProductos += `${index}. ${productosDisponibles[index].nombre} $${productosDisponibles[index].precio}.-\n`;
+for (let index = 1; index < stock.length; index++) {
+  listadoProductos += `${index}. ${stock[index].nombre} $${stock[index].precio}.-\n`;
 }
 
 // Selección de productos
@@ -82,9 +82,9 @@ while (seleccion != "fin") {
 
   if (seleccion.toLowerCase() === "fin") {
     finalizarCompra();
-  } else if (parseInt(seleccion) >= 1 && parseInt(seleccion) < productosDisponibles.length) {
-    productosCarrito.push(new Producto(productosDisponibles[seleccion].id, productosDisponibles[seleccion].nombre, productosDisponibles[seleccion].precio, 1));
-    alert(`👉 Agregaste ${productosDisponibles[seleccion].nombre} a tu carrito de compras`);
+  } else if (parseInt(seleccion) >= 1 && parseInt(seleccion) < stock.length) {
+    productosCarrito.push(new Producto(stock[seleccion].id, stock[seleccion].nombre, stock[seleccion].precio, 1));
+    alert(`👉 Agregaste ${stock[seleccion].nombre} a tu carrito de compras`);
   } else {
     alert(`No ingresaste una opción valida ⚠️`);
   }
