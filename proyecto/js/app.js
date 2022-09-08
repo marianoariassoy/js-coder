@@ -37,7 +37,7 @@ const finalizarCompra = () => {
   for (const iterator of productosCarrito) {
     pedidoFinal += iterator.nombre + "\n";
   }
-  alert(`Finalizaste tu compra con los siguientes productos:\n${pedidoFinal}`);
+  alert(`💪 Finalizaste tu compra con los siguientes productos: \n${pedidoFinal}`);
 
   let subTotal = productosCarrito.reduce((acc, item) => {
     return acc + item.precio;
@@ -45,7 +45,7 @@ const finalizarCompra = () => {
 
   //Envio
   if (subTotal >= envioGratuitoMinimo) {
-    alert(`¡Bien! Tu compra tiene envio gratuito, supera o es igual a $${envioGratuitoMinimo}.-`);
+    alert(`¡Bien! 🎉 Tu compra tiene envio gratuito, supera o es igual a $${envioGratuitoMinimo}.-`);
     costoEnvio = 0;
   } else
     alert(`Tu compra tiene un costo de envio de $${costoEnvio}.-. 
@@ -61,7 +61,7 @@ Impuestos: $${ivaFinal}.-
 
 El costo final de tu compra es $${costofinal}.-
 
-¡Muchas gracias!`);
+¡Muchas gracias! 😍`);
 };
 
 let seleccion = "";
@@ -78,14 +78,14 @@ for (let index = 1; index < productosDisponibles.length; index++) {
 
 // Selección de productos
 while (seleccion != "fin") {
-  seleccion = prompt(`¡Hola! Selecciona un número y agregá productos al carrito de compras.\nIngresá 'FIN' para finalizar la compra.\n\n${listadoProductos} `);
+  seleccion = prompt(`¡Hola!👋 Selecciona un número y agregá productos al carrito de compras. Ingresá 'FIN' para finalizar la compra 🙌\n\n${listadoProductos} `);
 
   if (seleccion.toLowerCase() === "fin") {
     finalizarCompra();
   } else if (parseInt(seleccion) >= 1 && parseInt(seleccion) < productosDisponibles.length) {
     productosCarrito.push(new Producto(productosDisponibles[seleccion].id, productosDisponibles[seleccion].nombre, productosDisponibles[seleccion].precio, 1));
-    alert(`Agregaste ${productosDisponibles[seleccion].nombre} a tu carrito de compras`);
+    alert(`👉 Agregaste ${productosDisponibles[seleccion].nombre} a tu carrito de compras`);
   } else {
-    alert(`No ingresaste una opción valida`);
+    alert(`No ingresaste una opción valida ⚠️`);
   }
 }
