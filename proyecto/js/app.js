@@ -35,7 +35,7 @@ const finalizarCompra = () => {
   //resumen
   let pedidoFinal = "";
   for (const iterator of productosCarrito) {
-    pedidoFinal += iterator.nombre + "\n";
+    pedidoFinal += `${iterator.cantidad} ${iterator.nombre} $${iterator.precio}.-\n`;
   }
   alert(`💪 Finalizaste tu compra con los siguientes productos: \n${pedidoFinal}`);
 
@@ -78,15 +78,17 @@ for (let index = 1; index < stock.length; index++) {
 
 // Selección de productos
 while (seleccion != "fin") {
-  seleccion = prompt(`¡Hola!👋 Selecciona un número y agregá productos al carrito de compras. Ingresá 'FIN' para finalizar la compra 🙌\n\n${listadoProductos} `);
+  seleccion = prompt(`¡Hola!👋 Selecciona un número y agregá el producto al carrito de compras. Ingresá 'FIN' para finalizar la compra 🙌\n\n${listadoProductos} `);
 
   seleccion = seleccion.trim().toLowerCase();
 
   if (seleccion === "fin") {
     finalizarCompra();
   } else if (parseInt(seleccion) >= 1 && parseInt(seleccion) < stock.length) {
-    productosCarrito.push(new Producto(stock[seleccion].id, stock[seleccion].nombre, stock[seleccion].precio, 1));
-    alert(`👉 Agregaste ${stock[seleccion].nombre} a tu carrito de compras`);
+    let cantidad = prompt(`Ingresa la cantidad`);
+    let precio = stock[seleccion].precio * cantidad;
+    productosCarrito.push(new Producto(stock[seleccion].id, stock[seleccion].nombre, precio, cantidad));
+    alert(`👉 Agregaste ${cantidad} ${stock[seleccion].nombre} a tu carrito de compras`);
   } else {
     alert(`No ingresaste una opción valida ⚠️`);
   }
