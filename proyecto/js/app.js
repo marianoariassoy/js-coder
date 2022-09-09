@@ -32,12 +32,12 @@ productos.push(new Producto(600, "Neptuno", 1500, 0, "Gaseoso", true, 24622));
 
 // Finalizar la compra
 const finalizarCompra = () => {
-  //resumen
-  let pedidoFinal = "";
+  //Resumen
+  let pedidoFinal = "Finalizaste tu compra con los siguientes productos:\n";
   for (const iterator of productosCarrito) {
-    pedidoFinal += `${iterator.cantidad} ${iterator.nombre} $${iterator.precio}.-\n`;
+    pedidoFinal += `👉 ${iterator.nombre} $${iterator.precio}.- (${iterator.cantidad}) \n`;
   }
-  alert(`💪 Finalizaste tu compra con los siguientes productos: \n${pedidoFinal}`);
+  alert(pedidoFinal);
 
   let subTotal = productosCarrito.reduce((acc, item) => {
     return acc + item.precio;
@@ -64,31 +64,30 @@ El costo final de tu compra es $${costofinal}.-
 ¡Muchas gracias! 😍`);
 };
 
-let seleccion = "";
-let listadoProductos = "";
-
 // Filtro los productos para mostrar solo los disponibles.
 const stock = productos.filter((item) => item.cantidad > 0);
 // Agrego un item vácio al comienzo del array así comenzamos desde el indice 1
 stock.unshift([]);
+
 // Creo un String para el menu.
+let listadoProductos = "¡Hola!👋 Selecciona un número y agregá el producto al carrito de compras. Ingresá 'FIN' para finalizar la compra 🙌\n\n";
 for (let index = 1; index < stock.length; index++) {
   listadoProductos += `${index}. ${stock[index].nombre} $${stock[index].precio}.-\n`;
 }
 
 // Selección de productos
-while (seleccion != "fin") {
-  seleccion = prompt(`¡Hola!👋 Selecciona un número y agregá el producto al carrito de compras. Ingresá 'FIN' para finalizar la compra 🙌\n\n${listadoProductos} `);
+let op = "";
+while (op != "fin") {
+  op = prompt(listadoProductos);
+  op = op.trim().toLowerCase();
 
-  seleccion = seleccion.trim().toLowerCase();
-
-  if (seleccion === "fin") {
+  if (op === "fin") {
     finalizarCompra();
-  } else if (parseInt(seleccion) >= 1 && parseInt(seleccion) < stock.length) {
-    let cantidad = prompt(`Ingresa la cantidad de ${stock[seleccion].nombre}`);
-    let precio = stock[seleccion].precio * cantidad;
-    productosCarrito.push(new Producto(stock[seleccion].id, stock[seleccion].nombre, precio, cantidad));
-    alert(`👉 Agregaste ${cantidad} ${stock[seleccion].nombre} a tu carrito de compras`);
+  } else if (parseInt(op) >= 1 && parseInt(op) < stock.length) {
+    let cantidad = prompt(`Ingresa la cantidad de ${stock[op].nombre}`);
+    let precio = stock[op].precio * cantidad;
+    productosCarrito.push(new Producto(stock[op].id, stock[op].nombre, precio, cantidad));
+    alert(`👉 Agregaste ${cantidad} ${stock[op].nombre} a tu carrito de compras`);
   } else {
     alert(`No ingresaste una opción valida ⚠️`);
   }
