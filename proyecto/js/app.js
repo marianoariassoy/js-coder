@@ -16,7 +16,7 @@ class Producto {
   }
 }
 
-// Array de productos y carrito
+// Arrays de productos y carrito de compra
 const productos = [];
 const productosCarrito = [];
 
@@ -35,7 +35,7 @@ const finalizarCompra = () => {
   //Resumen
   let pedidoFinal = "Finalizaste tu compra con los siguientes productos:\n";
   for (const iterator of productosCarrito) {
-    pedidoFinal += `👉 ${iterator.nombre} $${iterator.precio}.- (${iterator.cantidad}) \n`;
+    pedidoFinal += `👉 ${iterator.nombre} $${iterator.precio}.- (${iterator.cantidad})\n`;
   }
   alert(pedidoFinal);
 
@@ -45,27 +45,20 @@ const finalizarCompra = () => {
 
   //Envio
   if (subTotal >= envioGratuitoMinimo) {
-    alert(`🎉 Tu compra tiene envio gratuito, supera o es igual a $${envioGratuitoMinimo}.-`);
+    alert(`🎉 Tu compra tiene envio gratuito, supera los $${envioGratuitoMinimo}.-`);
     costoEnvio = 0;
-  } else
-    alert(`Tu compra tiene un costo de envio de $${costoEnvio}.-. 
-No superaste los $${envioGratuitoMinimo}.- para obtener envio gratuito`);
+  } else alert(`Tu compra tiene un costo de envio de $${costoEnvio}.-.\n😔 No superaste los $${envioGratuitoMinimo}.- para obtener envio gratuito`);
 
   //Costo final e impuestos
   let costofinal = subTotal + costoEnvio;
   let ivaFinal = Math.round(subTotal * iva);
   costofinal += ivaFinal;
-  alert(`El subtotal de la compra es: $${subTotal}.-
-Costo de envio: $${costoEnvio}.-
-Impuestos: $${ivaFinal}.-
-
-El costo final de tu compra es $${costofinal}.-
-
-¡Muchas gracias! 😍`);
+  alert(`El subtotal de la compra es: $${subTotal}.-\nCosto de envio: $${costoEnvio}.-\nImpuestos: $${ivaFinal}.-\n\nEl costo final de tu compra es $${costofinal}.-\n\n¡Muchas gracias por tu compra simulada! 😍`);
 };
 
-// Filtro los productos para mostrar solo los disponibles.
+// Hago un filtro en los productos para mostrar solo los disponibles.
 const stock = productos.filter((item) => item.cantidad > 0);
+
 // Agrego un item vácio al comienzo del array así comenzamos desde el indice 1
 stock.unshift([]);
 
@@ -84,10 +77,10 @@ while (op != "fin") {
   if (op === "fin") {
     finalizarCompra();
   } else if (parseInt(op) >= 1 && parseInt(op) < stock.length) {
-    let cantidad = prompt(`Ingresa la cantidad de ${stock[op].nombre}`);
+    let cantidad = prompt(`Ingresa la cantidad para ${stock[op].nombre}`);
     let precio = stock[op].precio * cantidad;
     productosCarrito.push(new Producto(stock[op].id, stock[op].nombre, precio, cantidad));
-    alert(`👉 Agregaste ${cantidad} ${stock[op].nombre} a tu carrito de compras`);
+    alert(`👉 Agregaste ${cantidad} de ${stock[op].nombre} a tu carrito de compras`);
   } else {
     alert(`No ingresaste una opción valida ⚠️`);
   }
