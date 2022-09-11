@@ -5,20 +5,30 @@ let iva = 0.28;
 
 //Clase Producto
 class Producto {
-  constructor(id, nombre, precio, cantidad, tipo, lunas, radio) {
+  constructor(id, nombre, precio, stock, tipo, lunas, radio) {
     this.id = id;
     this.nombre = nombre;
-    this.precio = precio;
-    this.cantidad = cantidad;
     this.tipo = tipo;
     this.lunas = lunas;
     this.radio = radio;
+    this.precio = precio;
+    this.stock = stock;
+  }
+  agregarProducto(cantidad) {
+    return alert(`👉 Agregaste ${cantidad} de ${this.nombre} a tu carrito de compras`);
+  }
+}
+
+class Pedido {
+  constructor(producto, cantidad) {
+    this.producto = producto;
+    this.cantidad = cantidad;
   }
 }
 
 // Arrays de productos y carrito de compra
 const productos = [];
-const productosCarrito = [];
+const carrito = [];
 
 // Agrego productos al listado
 productos.push(new Producto(100, "Mercurio", 1000, 10, "Rocoso", false, 2440));
@@ -34,13 +44,13 @@ productos.push(new Producto(600, "Neptuno", 1500, 0, "Gaseoso", true, 24622));
 const finalizarCompra = () => {
   //Resumen
   let pedidoFinal = "Finalizaste tu compra con los siguientes productos:\n";
-  for (const iterator of productosCarrito) {
-    pedidoFinal += `👉 ${iterator.nombre} $${iterator.precio}.- (${iterator.cantidad})\n`;
+  for (let index = 0; index < carrito.length; index++) {
+    pedidoFinal += `👉 ${carrito[index].producto.nombre} $${carrito[index].producto.precio}.- (${carrito[index].cantidad})\n`;
   }
   alert(pedidoFinal);
 
-  let subTotal = productosCarrito.reduce((acc, item) => {
-    return acc + item.precio;
+  let subTotal = carrito.reduce((acc, item) => {
+    return acc + item.producto.precio * item.cantidad;
   }, 0);
 
   //Envio
@@ -57,8 +67,7 @@ const finalizarCompra = () => {
 };
 
 // Hago un filtro en los productos para mostrar solo los disponibles.
-const stock = productos.filter((item) => item.cantidad > 0);
-
+const stock = productos.filter((item) => item.stock > 0);
 // Agrego un item vácio al comienzo del array así comenzamos desde el indice 1
 stock.unshift([]);
 
@@ -78,9 +87,8 @@ while (op != "fin") {
     finalizarCompra();
   } else if (parseInt(op) >= 1 && parseInt(op) < stock.length) {
     let cantidad = prompt(`Ingresa la cantidad para ${stock[op].nombre}`);
-    let precio = stock[op].precio * cantidad;
-    productosCarrito.push(new Producto(stock[op].id, stock[op].nombre, precio, cantidad));
-    alert(`👉 Agregaste ${cantidad} de ${stock[op].nombre} a tu carrito de compras`);
+    carrito.push(new Pedido(stock[op], cantidad));
+    stock[op].agregarProducto(cantidad);
   } else {
     alert(`No ingresaste una opción valida ⚠️`);
   }
