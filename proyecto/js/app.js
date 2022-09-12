@@ -2,6 +2,8 @@
 let costoEnvio = 500;
 let envioGratuitoMinimo = 5000;
 let iva = 0.28;
+const productos = [];
+const carrito = [];
 
 //Clase Producto
 class Producto {
@@ -15,22 +17,23 @@ class Producto {
     this.stock = stock;
   }
   agregarProducto(cantidad) {
+    carrito.push(new Pedido(this, cantidad));
     return alert(`👉 Agregaste ${cantidad} de ${this.nombre} a tu carrito de compras`);
   }
 }
 
+//Clase Pedido
 class Pedido {
   constructor(producto, cantidad) {
     this.producto = producto;
     this.cantidad = cantidad;
   }
+  calcularMonto() {
+    return this.producto.precio * this.cantidad;
+  }
 }
 
-// Arrays de productos y carrito de compra
-const productos = [];
-const carrito = [];
-
-// Agrego productos al listado
+// Agrego productos al listado de productos
 productos.push(new Producto(100, "Mercurio", 1000, 10, "Rocoso", false, 2440));
 productos.push(new Producto(250, "Venus", 1000, 10, "Rocoso", false, 6052));
 productos.push(new Producto(300, "Tierra", 4000, 5, "Rocoso", true, 6371));
@@ -42,16 +45,17 @@ productos.push(new Producto(600, "Neptuno", 1500, 0, "Gaseoso", true, 24622));
 
 // Finalizar la compra
 const finalizarCompra = () => {
-  //Resumen
+  //Resumen y subtotal
   let pedidoFinal = "Finalizaste tu compra con los siguientes productos:\n";
   for (let index = 0; index < carrito.length; index++) {
     pedidoFinal += `👉 ${carrito[index].producto.nombre} $${carrito[index].producto.precio}.- (${carrito[index].cantidad})\n`;
   }
   alert(pedidoFinal);
 
-  let subTotal = carrito.reduce((acc, item) => {
-    return acc + item.producto.precio * item.cantidad;
-  }, 0);
+  let subTotal = 0;
+  for (const iterator of carrito) {
+    subTotal += iterator.calcularMonto();
+  }
 
   //Envio
   if (subTotal >= envioGratuitoMinimo) {
@@ -86,8 +90,7 @@ while (op != "fin") {
   if (op === "fin") {
     finalizarCompra();
   } else if (parseInt(op) >= 1 && parseInt(op) < stock.length) {
-    let cantidad = prompt(`Ingresa la cantidad para ${stock[op].nombre}`);
-    carrito.push(new Pedido(stock[op], cantidad));
+    let cantidad = parseInt(prompt(`Ingresa la cantidad para ${stock[op].nombre}`));
     stock[op].agregarProducto(cantidad);
   } else {
     alert(`No ingresaste una opción valida ⚠️`);
