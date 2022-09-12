@@ -20,6 +20,9 @@ class Producto {
     carrito.push(new Pedido(this, cantidad));
     return alert(`👉 Agregaste ${cantidad} de ${this.nombre} a tu carrito de compras`);
   }
+  mostrarProducto() {
+    return `${this.nombre} $${this.precio}.-`;
+  }
 }
 
 //Clase Pedido
@@ -30,6 +33,9 @@ class Pedido {
   }
   calcularMonto() {
     return this.producto.precio * this.cantidad;
+  }
+  mostrarPedido() {
+    return `${this.producto.nombre} $${this.producto.precio}.- (${this.cantidad})`;
   }
 }
 
@@ -47,15 +53,12 @@ productos.push(new Producto(600, "Neptuno", 1500, 0, "Gaseoso", true, 24622));
 const finalizarCompra = () => {
   //Resumen y subtotal
   let pedidoFinal = "Finalizaste tu compra con los siguientes productos:\n";
-  for (let index = 0; index < carrito.length; index++) {
-    pedidoFinal += `👉 ${carrito[index].producto.nombre} $${carrito[index].producto.precio}.- (${carrito[index].cantidad})\n`;
-  }
+  for (let i = 0; i < carrito.length; i++) pedidoFinal += `👉 ${carrito[i].mostrarPedido()}\n`;
+
   alert(pedidoFinal);
 
   let subTotal = 0;
-  for (const iterator of carrito) {
-    subTotal += iterator.calcularMonto();
-  }
+  for (const iterator of carrito) subTotal += iterator.calcularMonto();
 
   //Envio
   if (subTotal >= envioGratuitoMinimo) {
@@ -77,9 +80,7 @@ stock.unshift([]);
 
 // Creo un String para el menu.
 let listadoProductos = "¡Hola!👋 Selecciona un número y agregá el producto al carrito de compras. Ingresá 'FIN' para finalizar la compra 🙌\n\n";
-for (let index = 1; index < stock.length; index++) {
-  listadoProductos += `${index}. ${stock[index].nombre} $${stock[index].precio}.-\n`;
-}
+for (let i = 1; i < stock.length; i++) listadoProductos += `${i}. ${stock[i].mostrarProducto()}\n`;
 
 // Selección de productos
 let op = "";
