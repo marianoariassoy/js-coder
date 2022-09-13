@@ -45,9 +45,6 @@ class Producto {
     contenedor.appendChild(item);
     calcularMontos();
   }
-  mostrarProducto() {
-    return `${this.nombre} $${this.precio}.-`;
-  }
 }
 
 //Clase Pedido
