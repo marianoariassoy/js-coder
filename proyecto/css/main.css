@@ -8,7 +8,7 @@
 :root {
   --color-primary: #17fd85;
   --color-secondary: #ea088c;
-  --metric-box-spacing: 50px;
+  --metric-box-spacing: 80px;
 }
 
 html,
@@ -113,7 +113,7 @@ main {
 }
 .cards-container {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(15em, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
   grid-gap: var(--metric-box-spacing);
 }
 

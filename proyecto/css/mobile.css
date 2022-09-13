@@ -8,4 +8,7 @@
   body {
     font-size: 90%;
   }
+  aside {
+    max-width: 900px;
+  }
 }
