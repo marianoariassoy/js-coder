@@ -1,6 +1,6 @@
 // Variables globales
-let envioGratuitoMinimo = 5000;
-let iva = 0.28;
+const envioGratuitoMinimo = 5000;
+const iva = 0.28;
 const productos = [];
 const carrito = [];
 
