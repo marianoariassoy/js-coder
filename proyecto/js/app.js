@@ -12,10 +12,10 @@ const precioFinal = document.querySelector("#precio-final");
 
 //Clase Producto
 class Producto {
-  constructor(id, nombre, descipcion, tipo, lunas, radio, imagen, precio, stock) {
+  constructor(id, nombre, descripcion, tipo, lunas, radio, imagen, precio, stock) {
     this.id = id;
     this.nombre = nombre;
-    this.descipcion = descipcion;
+    this.descripcion = descripcion;
     this.tipo = tipo;
     this.lunas = lunas;
     this.radio = radio;
@@ -137,3 +137,5 @@ while (op != "fin") {
     alert(`No ingresaste una opción valida ⚠️`);
   }
 }
+
+console.log(productos);
