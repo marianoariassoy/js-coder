@@ -62,25 +62,25 @@ class Pedido {
 }
 
 // Agrego productos al listado de productos
-productos.push(new Producto(100, "Mercurio", "", "rock", false, 2440, "mercury.png", 1000, 0));
-productos.push(new Producto(200, "Venus", "", "rock", false, 6052, "venus.png", 1000, 10));
-productos.push(new Producto(300, "Tierra", "", "rock", true, 6371, "earth.png", 5000, 10));
-productos.push(new Producto(400, "Marte", "", "rock", true, 3390, "mars.png", 4000, 10));
-productos.push(new Producto(500, "Jupiter", "", "gas", true, 69911, "jupiter.png", 2000, 10));
-productos.push(new Producto(600, "Saturno", "", "gas", true, 58232, "saturn.png", 2000, 10));
-productos.push(new Producto(700, "Urano", "", "gas", true, 25362, "uranus.png", 1000, 0));
-productos.push(new Producto(800, "Neptuno", "", "gas", true, 24622, "neptuno.png", 1000, 0));
+productos.push(new Producto(100, "Mercurio", "", "terrestrial", false, 2440, "mercury.png", 1000, 0));
+productos.push(new Producto(200, "Venus", "", "terrestrial", false, 6052, "venus.png", 1000, 10));
+productos.push(new Producto(300, "Tierra", "", "terrestrial", true, 6371, "earth.png", 5000, 10));
+productos.push(new Producto(400, "Marte", "", "terrestrial", true, 3390, "mars.png", 4000, 10));
+productos.push(new Producto(500, "Jupiter", "", "gas giants", true, 69911, "jupiter.png", 2000, 10));
+productos.push(new Producto(600, "Saturno", "", "gas giants", true, 58232, "saturn.png", 2000, 10));
+productos.push(new Producto(700, "Urano", "", "gas giants", true, 25362, "uranus.png", 1000, 0));
+productos.push(new Producto(800, "Neptuno", "", "gas giants", true, 24622, "neptuno.png", 1000, 0));
 
 //Renderizo las cards de planetas
 const contenedor = document.querySelector(".cards-container");
 for (let producto of productos) {
   let item = document.createElement("article");
-  if (producto.lunas) lunas = "Has moons";
-  else lunas = "Has no moons";
+  if (producto.lunas) lunas = "has moons";
+  else lunas = "has no moons";
   item.innerHTML = `<img src="./assets/${producto.imagen}" alt="${producto.nombre}" width="400" height="400" loading="lazy" class="mb-1" />
             <div class="content">
               <div class="card-title">${producto.nombre}</div>
-              <div class="card-description mb-1">It has ${producto.radio} km. of radio. <br> Its composition is ${producto.tipo} <br> ${lunas} </div>
+              <div class="card-description mb-1">It is a ${producto.tipo} planet with ${producto.radio} km. of radio,     and it ${lunas} </div>
               <div class="content-price">
                 <span class="text-primary">$${producto.precio}</span>
                 <button class="btn-article text-primary">ADD CART</button>
