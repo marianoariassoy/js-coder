@@ -9,6 +9,8 @@ const precioSubtotal = document.querySelector("#precio-subtotal");
 const precioShiping = document.querySelector("#precio-shiping");
 const precioIVA = document.querySelector("#precio-iva");
 const precioFinal = document.querySelector("#precio-final");
+const contenedorCards = document.querySelector(".cards-container");
+const contenedorCart = document.querySelector(".cart-list");
 
 //Clase Producto
 class Producto {
@@ -26,9 +28,8 @@ class Producto {
 
   agregarProducto(cantidad) {
     carrito.push(new Pedido(this, cantidad));
-    const contenedor = document.querySelector(".cart-list");
-    let item = document.createElement("article");
-    item.innerHTML = `<article class="cart-item">
+    let article = document.createElement("article");
+    article.innerHTML = `<article class="cart-item">
             <div class="cart-img">
               <img src="./assets/${this.imagen}" alt="${this.nombre}" />
             </div>
@@ -42,7 +43,7 @@ class Producto {
               <a href="#"> <i class="fa-solid fa-xmark"></i></a>
             </div>
           </article> `;
-    contenedor.appendChild(item);
+    contenedorCart.appendChild(article);
     calcularMontos();
   }
   mostrarProducto() {
@@ -72,12 +73,12 @@ productos.push(new Producto(700, "Urano", "", "gas giants", true, 25362, "uranus
 productos.push(new Producto(800, "Neptuno", "", "gas giants", true, 24622, "neptuno.png", 1000, 0));
 
 //Renderizo las cards de planetas
-const contenedor = document.querySelector(".cards-container");
+
 for (let producto of productos) {
-  let item = document.createElement("article");
+  let article = document.createElement("article");
   if (producto.lunas) lunas = "has moons";
   else lunas = "has no moons";
-  item.innerHTML = `<img src="./assets/${producto.imagen}" alt="${producto.nombre}" width="400" height="400" loading="lazy" class="mb-1" />
+  article.innerHTML = `<img src="./assets/${producto.imagen}" alt="${producto.nombre}" width="400" height="400" loading="lazy" class="mb-1" />
             <div class="content">
               <div class="card-title">${producto.nombre}</div>
               <div class="card-description mb-1">It is a ${producto.tipo} planet with ${producto.radio} km. of radio,     and it ${lunas} </div>
@@ -86,7 +87,7 @@ for (let producto of productos) {
                 <button class="btn-article text-primary">ADD CART</button>
               </div>
             </div>`;
-  contenedor.appendChild(item);
+  contenedorCards.appendChild(article);
 }
 
 const calcularMontos = () => {
