@@ -8,7 +8,9 @@ header {
   height: 80px;
   padding: 0 var(--metric-box-spacing);
 }
-
+.header-logo {
+  padding: 0 1rem;
+}
 nav ul li {
   display: inline;
   margin: 0 20px;
@@ -22,9 +24,8 @@ nav ul li {
   object-fit: cover;
 }
 .card-title {
-  display: block;
+  font-variation-settings: "wght" 600;
 }
-
 .content-price {
   display: flex;
   justify-content: space-between;
@@ -46,11 +47,10 @@ footer {
   margin-top: 5rem;
   padding: var(--metric-box-spacing);
 }
-
 .btn-article {
   font-family: inherit;
-  font-size: 0.8rem;
-  font-weight: 700;
+  font-size: 0.9rem;
+
   cursor: pointer;
   border-bottom: 3px solid transparent;
   padding-bottom: 3px;
@@ -58,7 +58,6 @@ footer {
 .btn-article:hover {
   border-bottom: 3px solid var(--color-primary);
 }
-
 aside {
   position: relative;
   position: fixed;
@@ -68,11 +67,16 @@ aside {
   right: 0;
   width: 100%;
   max-width: 400px;
-  height: 100vh;
+  min-height: 100vh;
   color: black;
+}
+.cart-empty {
+  flex: 4;
+  padding: 4rem;
 }
 .cart-list {
   flex: 1;
+  font-size: 0.9rem;
 }
 .cart-item {
   display: grid;
@@ -89,9 +93,6 @@ aside {
   aspect-ratio: 1;
   object-fit: cover;
   background-color: black;
-}
-.cart-delete {
-  text-align: right;
 }
 aside a {
   color: black;

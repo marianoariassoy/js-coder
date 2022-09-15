@@ -22,7 +22,7 @@
       <div class="menu">
         <a href="#" class="text-white"><strong>FILTERS</strong></a>
       </div>
-      <div class="text-center">
+      <div class="header-logo text-center">
         <h1 class="logo">Buy Planets and Stars</h1>
         <nav class="hide">
           <ul>
@@ -38,16 +38,43 @@
     </header>
     <main>
       <section class="container">
-        <div class="cards-container w-100 mb-2"></div>
+        <div class="cards-container w-100 mb-2">
+          <template id="template-cards">
+            <article>
+              <img src="" alt="" width="400" height="400" loading="lazy" />
+              <div class="content">
+                <div class="card-title text-primary"></div>
+                <div class="card-description"></div>
+                <div class="content-price">
+                  <div class="text-gray card-price"></div>
+                  <button class="btn-article text-primary"><i class="fa-solid fa-heart"></i> BUY</button>
+                </div>
+              </div>
+            </article>
+          </template>
+        </div>
       </section>
 
-      <aside class="bg-primary p-2">
-        <div class="cart-list">
-          <div class="cart-close text-right mb-2">
-            <a href="#"><strong>CLOSE</strong> </a>
-          </div>
+      <aside class="bg-primary p-2 hide">
+        <div class="cart-close text-right mb-2">
+          <a href="#"><strong>CLOSE</strong></a>
         </div>
-        <div class="cart-footer">
+        <div class="cart-empty text-center"><h2>Your shopping cart is empty :-(</h2></div>
+        <div class="cart-list">
+          <template id="template-cart">
+            <article class="cart-item">
+              <div class="cart-img">
+                <img src="" alt="" />
+              </div>
+              <div class="cart-title"></div>
+              <div class="cart-amount"></div>
+              <div class="cart-delete text-right">
+                <a href="#"><i class="fa-solid fa-xmark"></i></a>
+              </div>
+            </article>
+          </template>
+        </div>
+        <div class="cart-footer hide">
           <div class="cart-subtotal">
             <div>Subtotal:</div>
             <div class="text-right" id="precio-subtotal">$0</div>

@@ -1,142 +1,143 @@
-// Variables globales
-const envioGratuitoMinimo = 5000;
+//Variables globales
+const freeShiping = 5000;
 const iva = 0.28;
-const productos = [];
-const carrito = [];
+const productsArray = [];
+const cartArray = [];
 
 //Nodos del DOM
-const precioSubtotal = document.querySelector("#precio-subtotal");
-const precioShiping = document.querySelector("#precio-shiping");
-const precioIVA = document.querySelector("#precio-iva");
-const precioFinal = document.querySelector("#precio-final");
-const contenedorCards = document.querySelector(".cards-container");
-const contenedorCart = document.querySelector(".cart-list");
+//Containers
+const cardsContainer = document.querySelector(".cards-container");
+const cartContainer = document.querySelector(".cart-list");
+//Templates
+const templateCard = document.querySelector("#template-cards");
+const card = templateCard.content.querySelector("article");
+const templateItemCart = document.querySelector("#template-cart");
+const itemCart = templateItemCart.content.querySelector("article");
+//Cart
+const cartMain = document.querySelector("aside");
+const cartFooter = document.querySelector(".cart-footer");
+const cartEmpty = document.querySelector(".cart-empty");
+const cartClose = document.querySelector(".cart-close a");
+const cartOpen = document.querySelector(".cart a");
 
-//Clase Producto
-class Producto {
-  constructor(id, nombre, descripcion, tipo, lunas, radio, imagen, precio, stock) {
-    this.id = id;
-    this.nombre = nombre;
-    this.descripcion = descripcion;
-    this.tipo = tipo;
-    this.lunas = lunas;
-    this.radio = radio;
-    this.imagen = imagen;
-    this.precio = precio;
-    this.stock = stock;
-  }
+//Agrego productos al listado de productos
+productsArray.push({ id: 1, nombre: "Mercurio", tipo: "terrestrial", lunas: false, radio: 2440, imagen: "mercury.png", precio: 1000, stock: 0 });
+productsArray.push({ id: 2, nombre: "Venus", tipo: "terrestrial", lunas: false, radio: 6052, imagen: "venus.png", precio: 1000, stock: 0 });
+productsArray.push({ id: 3, nombre: "Tierra", tipo: "terrestrial", lunas: true, radio: 6371, imagen: "earth.png", precio: 5000, stock: 0 });
+productsArray.push({ id: 4, nombre: "Marte", tipo: "terrestrial", lunas: true, radio: 3390, imagen: "mars.png", precio: 3000, stock: 0 });
+productsArray.push({ id: 5, nombre: "Jupiter", tipo: "gas giants", lunas: true, radio: 69911, imagen: "jupiter.png", precio: 2000, stock: 0 });
+productsArray.push({ id: 6, nombre: "Saturno", tipo: "gas giants", lunas: true, radio: 58232, imagen: "saturn.png", precio: 2000, stock: 0 });
+productsArray.push({ id: 7, nombre: "Urano", tipo: "gas giants", lunas: true, radio: 25362, imagen: "uranus.png", precio: 1000, stock: 0 });
+productsArray.push({ id: 8, nombre: "Neptuno", tipo: "gas giants", lunas: true, radio: 24622, imagen: "neptuno.png", precio: 1000, stock: 0 });
 
-  agregarProducto(cantidad) {
-    carrito.push(new Pedido(this, cantidad));
-    let article = document.createElement("article");
-    article.innerHTML = `<article class="cart-item">
-            <div class="cart-img">
-              <img src="./assets/${this.imagen}" alt="${this.nombre}" />
-            </div>
-            <div class="cart-title">
-              <small>${this.nombre}<br />$${this.precio}.-</small>
-            </div>
-            <div class="cart-amount">
-              <small>${cantidad}</small>
-            </div>
-            <div class="cart-delete text-right">
-              <a href="#"> <i class="fa-solid fa-xmark"></i></a>
-            </div>
-          </article> `;
-    contenedorCart.appendChild(article);
-    calcularMontos();
-  }
-  mostrarProducto() {
-    return `${this.nombre} $${this.precio}.-`;
-  }
-}
-
-//Clase Pedido
-class Pedido {
-  constructor(producto, cantidad) {
-    this.producto = producto;
-    this.cantidad = cantidad;
-  }
-  monto() {
-    return this.producto.precio * this.cantidad;
-  }
-}
-
-// Agrego productos al listado de productos
-productos.push(new Producto(100, "Mercurio", "", "terrestrial", false, 2440, "mercury.png", 1000, 0));
-productos.push(new Producto(200, "Venus", "", "terrestrial", false, 6052, "venus.png", 1000, 10));
-productos.push(new Producto(300, "Tierra", "", "terrestrial", true, 6371, "earth.png", 5000, 10));
-productos.push(new Producto(400, "Marte", "", "terrestrial", true, 3390, "mars.png", 4000, 10));
-productos.push(new Producto(500, "Jupiter", "", "gas giants", true, 69911, "jupiter.png", 2000, 10));
-productos.push(new Producto(600, "Saturno", "", "gas giants", true, 58232, "saturn.png", 2000, 10));
-productos.push(new Producto(700, "Urano", "", "gas giants", true, 25362, "uranus.png", 1000, 0));
-productos.push(new Producto(800, "Neptuno", "", "gas giants", true, 24622, "neptuno.png", 1000, 0));
-
-//Renderizo las cards de planetas
-
-for (let producto of productos) {
-  let article = document.createElement("article");
+//Renderizo las cards
+for (let producto of productsArray) {
   if (producto.lunas) lunas = "has moons";
   else lunas = "has no moons";
-  article.innerHTML = `<img src="./assets/${producto.imagen}" alt="${producto.nombre}" width="400" height="400" loading="lazy" class="mb-1" />
-            <div class="content">
-              <div class="card-title">${producto.nombre}</div>
-              <div class="card-description mb-1">It is a ${producto.tipo} planet with ${producto.radio} km. of radio,     and it ${lunas} </div>
-              <div class="content-price">
-                <span class="text-primary">$${producto.precio}</span>
-                <button class="btn-article text-primary">ADD CART</button>
-              </div>
-            </div>`;
-  contenedorCards.appendChild(article);
+  let cardClonada = card.cloneNode(true);
+  cardClonada.querySelector("img").src = `./assets/${producto.imagen}`;
+  cardClonada.querySelector(".card-title").innerText = producto.nombre;
+  cardClonada.querySelector(".card-description").innerText = `It is a ${producto.tipo} planet with ${producto.radio} km. of radio, and it ${lunas}.`;
+  cardClonada.querySelector(".card-price").innerText = `$${producto.precio}`;
+  cardClonada.querySelector("button").dataset.id = producto.id;
+  cardsContainer.appendChild(cardClonada);
+}
+
+//Funciones
+function agregarProducto(id) {
+  //Busco el id en el array de productos
+  let pos = 0;
+  for (let index = 0; index < productsArray.length; index++) {
+    if (productsArray[index].id == id) {
+      pos = index;
+      break;
+    }
+  }
+  //Reviso si ya existe en el carrito
+  const existe = cartArray.some((item) => item.id == id);
+  if (!existe) {
+    cartArray.push({ ...productsArray[pos], cantidad: 1 });
+  } else {
+    cartArray.map((item) => {
+      if (item.id == id) {
+        item.cantidad++;
+        return item;
+      }
+    });
+  }
+  renderCarrito();
 }
 
 const calcularMontos = () => {
   //Subtotal
   let subTotal = 0;
-  for (const iterator of carrito) subTotal += iterator.monto();
-  precioSubtotal.innerHTML = `$${subTotal}`;
-
+  for (const item of cartArray) subTotal += item.precio * item.cantidad;
+  document.querySelector("#precio-subtotal").innerText = `$${subTotal}`;
   //Envio
-  let costoEnvio = 0;
-  if (subTotal <= envioGratuitoMinimo) costoEnvio = 500;
-  precioShiping.innerHTML = `$${costoEnvio} <br /><small>Free shipping from $${envioGratuitoMinimo}</small>`;
-
+  if (subTotal <= freeShiping) {
+    costoEnvio = 500;
+    document.querySelector("#precio-shiping").innerHTML = `$${costoEnvio} <br /><small>Free shipping from $${freeShiping}</small>`;
+  } else {
+    costoEnvio = 0;
+    document.querySelector("#precio-shiping").innerText = `$${costoEnvio}`;
+  }
   //Impuestos
   let ivaFinal = Math.round(subTotal * iva);
-  precioIVA.innerHTML = `$${ivaFinal}`;
-
+  document.querySelector("#precio-iva").innerHTML = `$${ivaFinal}`;
   //Precio final
   let costofinal = subTotal + costoEnvio + ivaFinal;
   let costoFinalCoutas = Math.round(costofinal / 12);
-  precioFinal.innerHTML = `$${costofinal} <br /><small>Pay in 12 parts of $${costoFinalCoutas}</small>`;
+  document.querySelector("#precio-final").innerHTML = `$${costofinal} <br /><small>Pay in 12 parts of $${costoFinalCoutas}</small>`;
 };
 
-// Finalizar la compra
-const finalizarCompra = () => {
-  alert("Finalizo su compra, ahora puede ver el resumen como corresponde en el DOM 😍");
+const eliminarPedido = (num) => {
+  cartArray.splice(num, 1);
+  renderCarrito();
 };
 
-// Agrego un item vácio al comienzo del array así comenzamos desde el indice 1
-productos.unshift([]);
+const carritoAbrir = () => {
+  cartMain.classList.remove("hide");
+};
+const carritoCerrar = () => {
+  cartMain.classList.add("hide");
+};
 
-// Creo un String para el menu.
-let listadoProductos = "¡Hola!👋 Selecciona un número y agregá el producto al carrito de compras. Ingresá 'FIN' para finalizar la compra 🙌\n\n";
-for (let i = 1; i < productos.length; i++) listadoProductos += `${i}. ${productos[i].mostrarProducto()}\n`;
+//Renderizo el carrito
+const renderCarrito = () => {
+  cartContainer.innerHTML = "";
+  let count = cartArray.length;
+  if (count) {
+    cartArray.forEach(function (item, index) {
+      let cardClonada = itemCart.cloneNode(true);
+      cardClonada.querySelector("img").src = `./assets/${item.imagen}`;
+      cardClonada.querySelector(".cart-title").innerHTML = `${item.nombre}<br>$${item.precio}.-`;
+      cardClonada.querySelector(".cart-amount").innerHTML = item.cantidad;
+      cartContainer.appendChild(cardClonada);
 
-// Selección de productos
-let op = "";
-while (op != "fin") {
-  op = prompt(listadoProductos);
-  op = op.trim().toLowerCase();
-
-  if (op === "fin") {
-    finalizarCompra();
-  } else if (parseInt(op) >= 1 && parseInt(op) < productos.length) {
-    let cantidad = parseInt(prompt(`Ingresa la cantidad para ${productos[op].nombre}`));
-    productos[op].agregarProducto(cantidad);
+      //Escuchador
+      cardClonada.querySelector(".cart-delete a").addEventListener("click", (e) => {
+        e.preventDefault;
+        eliminarPedido(index);
+      });
+    });
+    cartFooter.classList.remove("hide");
+    cartEmpty.classList.add("hide");
+    calcularMontos();
+    carritoAbrir();
   } else {
-    alert(`No ingresaste una opción valida ⚠️`);
+    cartFooter.classList.add("hide");
+    cartEmpty.classList.remove("hide");
   }
-}
+};
 
-console.log(productos);
+//Escuchadores
+const addCartButtons = document.querySelectorAll("button.btn-article");
+addCartButtons.forEach((item) => {
+  item.addEventListener("click", () => {
+    let id = item.dataset.id;
+    agregarProducto(id);
+  });
+});
+
+cartClose.addEventListener("click", carritoCerrar);
+cartOpen.addEventListener("click", carritoAbrir);
