@@ -50,13 +50,22 @@ footer {
 .btn-article {
   font-family: inherit;
   font-size: 0.9rem;
-
-  cursor: pointer;
   border-bottom: 3px solid transparent;
   padding-bottom: 3px;
 }
 .btn-article:hover {
   border-bottom: 3px solid var(--color-primary);
+}
+.btn-close {
+  font-family: inherit;
+  font-variation-settings: "wght" 700;
+  border-bottom: 3px solid transparent;
+}
+.btn-close:hover {
+  border-bottom: 3px solid;
+}
+.btn-delete:hover {
+  color: white;
 }
 aside {
   position: relative;
@@ -64,11 +73,12 @@ aside {
   display: flex;
   flex-direction: column;
   top: 0;
-  right: 0;
+  right: -920px;
   width: 100%;
   max-width: 400px;
   min-height: 100vh;
   color: black;
+  transition: all 0.5s ease;
 }
 .cart-empty {
   flex: 4;
@@ -127,4 +137,8 @@ aside a:hover {
 }
 .btn-end:hover {
   background-color: #333;
+}
+.cartOpen {
+  right: 0;
+  transition: all 0.5s ease;
 }

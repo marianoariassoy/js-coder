@@ -32,8 +32,8 @@
           </ul>
         </nav>
       </div>
-      <div class="cart">
-        <a href="#" class="text-white"><strong>CART</strong></a>
+      <div class="cart cart-open">
+        <button class="btn-close text-white text-primary-hover">CART</button>
       </div>
     </header>
     <main>
@@ -54,10 +54,9 @@
           </template>
         </div>
       </section>
-
-      <aside class="bg-primary p-2 hide">
+      <aside class="bg-primary p-2">
         <div class="cart-close text-right mb-2">
-          <a href="#"><strong>CLOSE</strong></a>
+          <button class="btn-close">CLOSE</button>
         </div>
         <div class="cart-empty text-center"><h2>Your shopping cart is empty :-(</h2></div>
         <div class="cart-list">
@@ -69,7 +68,7 @@
               <div class="cart-title"></div>
               <div class="cart-amount"></div>
               <div class="cart-delete text-right">
-                <a href="#"><i class="fa-solid fa-xmark"></i></a>
+                <button class="btn-delete"><i class="fa-solid fa-xmark"></i></button>
               </div>
             </article>
           </template>

@@ -48,6 +48,7 @@ a,
 button,
 a:hover,
 button:hover {
+  cursor: pointer;
   transition: all 0.2s ease;
 }
 a:hover {

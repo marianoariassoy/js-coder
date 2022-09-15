@@ -16,18 +16,16 @@ const itemCart = templateItemCart.content.querySelector("article");
 //Cart
 const cartFooter = document.querySelector(".cart-footer");
 const cartEmpty = document.querySelector(".cart-empty");
-const cartClose = document.querySelector(".cart-close a");
-const cartOpen = document.querySelector(".cart a");
 
 //Agrego productos al listado de productos
-productsArray.push({ id: 1, nombre: "Mercurio", tipo: "terrestrial", lunas: false, radio: 2440, imagen: "mercury.png", precio: 1000, stock: 0 });
+productsArray.push({ id: 1, nombre: "Mercury", tipo: "terrestrial", lunas: false, radio: 2440, imagen: "mercury.png", precio: 1000, stock: 0 });
 productsArray.push({ id: 2, nombre: "Venus", tipo: "terrestrial", lunas: false, radio: 6052, imagen: "venus.png", precio: 1000, stock: 0 });
-productsArray.push({ id: 3, nombre: "Tierra", tipo: "terrestrial", lunas: true, radio: 6371, imagen: "earth.png", precio: 5000, stock: 0 });
-productsArray.push({ id: 4, nombre: "Marte", tipo: "terrestrial", lunas: true, radio: 3390, imagen: "mars.png", precio: 3000, stock: 0 });
+productsArray.push({ id: 3, nombre: "Earth", tipo: "terrestrial", lunas: true, radio: 6371, imagen: "earth.png", precio: 5000, stock: 0 });
+productsArray.push({ id: 4, nombre: "Mars", tipo: "terrestrial", lunas: true, radio: 3390, imagen: "mars.png", precio: 3000, stock: 0 });
 productsArray.push({ id: 5, nombre: "Jupiter", tipo: "gas giants", lunas: true, radio: 69911, imagen: "jupiter.png", precio: 2000, stock: 0 });
-productsArray.push({ id: 6, nombre: "Saturno", tipo: "gas giants", lunas: true, radio: 58232, imagen: "saturn.png", precio: 2000, stock: 0 });
-productsArray.push({ id: 7, nombre: "Urano", tipo: "gas giants", lunas: true, radio: 25362, imagen: "uranus.png", precio: 1000, stock: 0 });
-productsArray.push({ id: 8, nombre: "Neptuno", tipo: "gas giants", lunas: true, radio: 24622, imagen: "neptuno.png", precio: 1000, stock: 0 });
+productsArray.push({ id: 6, nombre: "Saturn", tipo: "gas giants", lunas: true, radio: 58232, imagen: "saturn.png", precio: 2000, stock: 0 });
+productsArray.push({ id: 7, nombre: "Uranus", tipo: "gas giants", lunas: true, radio: 25362, imagen: "uranus.png", precio: 1000, stock: 0 });
+productsArray.push({ id: 8, nombre: "Neptune", tipo: "gas giants", lunas: true, radio: 24622, imagen: "neptuno.png", precio: 1000, stock: 0 });
 
 //Renderizo las cards
 for (let producto of productsArray) {
@@ -106,7 +104,7 @@ const renderCarrito = () => {
       cartContainer.appendChild(cardClonada);
 
       //Escuchador
-      cardClonada.querySelector(".cart-delete a").addEventListener("click", (e) => {
+      cardClonada.querySelector(".cart-delete button").addEventListener("click", (e) => {
         e.preventDefault;
         eliminarPedido(index);
       });
@@ -121,9 +119,6 @@ const renderCarrito = () => {
   }
 };
 
-const carritoAbrir = () => document.querySelector("aside").classList.remove("hide");
-const carritoCerrar = () => document.querySelector("aside").classList.add("hide");
-
 //Escuchadores
 const addCartButtons = document.querySelectorAll("button.btn-article");
 addCartButtons.forEach((item) => {
@@ -133,5 +128,8 @@ addCartButtons.forEach((item) => {
   });
 });
 
-cartClose.addEventListener("click", carritoCerrar);
-cartOpen.addEventListener("click", carritoAbrir);
+//Abrir y cerrar el carrito
+const carritoAbrir = () => document.querySelector("aside").classList.add("cartOpen");
+const carritoClose = () => document.querySelector("aside").classList.remove("cartOpen");
+document.querySelector(".cart-open button").addEventListener("click", carritoAbrir);
+document.querySelector(".cart-close button").addEventListener("click", carritoClose);
