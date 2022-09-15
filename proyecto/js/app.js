@@ -14,7 +14,6 @@ const card = templateCard.content.querySelector("article");
 const templateItemCart = document.querySelector("#template-cart");
 const itemCart = templateItemCart.content.querySelector("article");
 //Cart
-const cartMain = document.querySelector("aside");
 const cartFooter = document.querySelector(".cart-footer");
 const cartEmpty = document.querySelector(".cart-empty");
 const cartClose = document.querySelector(".cart-close a");
@@ -53,17 +52,14 @@ function agregarProducto(id) {
       break;
     }
   }
-  //Reviso si ya existe en el carrito
+  //Reviso si el item ya existe en el array cartArray
   const existe = cartArray.some((item) => item.id == id);
-  if (!existe) {
-    cartArray.push({ ...productsArray[pos], cantidad: 1 });
+  if (existe) {
+    //Incremento la cantidad
+    cartArray.map((item) => (item.id == id ? item.cantidad++ : item.cantidad));
   } else {
-    cartArray.map((item) => {
-      if (item.id == id) {
-        item.cantidad++;
-        return item;
-      }
-    });
+    //Creo el pedido
+    cartArray.push({ ...productsArray[pos], cantidad: 1 });
   }
   renderCarrito();
 }
@@ -95,18 +91,13 @@ const eliminarPedido = (num) => {
   renderCarrito();
 };
 
-const carritoAbrir = () => {
-  cartMain.classList.remove("hide");
-};
-const carritoCerrar = () => {
-  cartMain.classList.add("hide");
-};
-
 //Renderizo el carrito
 const renderCarrito = () => {
+  //Elimino todos los nodos
   cartContainer.innerHTML = "";
-  let count = cartArray.length;
-  if (count) {
+  //Veo si hay items en el array cartArray
+  let total = cartArray.length;
+  if (total) {
     cartArray.forEach(function (item, index) {
       let cardClonada = itemCart.cloneNode(true);
       cardClonada.querySelector("img").src = `./assets/${item.imagen}`;
@@ -129,6 +120,9 @@ const renderCarrito = () => {
     cartEmpty.classList.remove("hide");
   }
 };
+
+const carritoAbrir = () => document.querySelector("aside").classList.remove("hide");
+const carritoCerrar = () => document.querySelector("aside").classList.add("hide");
 
 //Escuchadores
 const addCartButtons = document.querySelectorAll("button.btn-article");
