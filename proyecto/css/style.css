@@ -90,11 +90,11 @@ aside {
 }
 .cart-item {
   display: grid;
-  grid-template-columns: 1fr 2fr 1fr 1fr;
-  grid-gap: 20px;
-  padding-bottom: 1.5rem;
+  grid-template-columns: 1fr 1fr 1fr 50px 20px;
+  grid-gap: 1.3rem;
+  padding-bottom: 1rem;
   border-bottom: 1px dashed black;
-  margin-bottom: 1.5rem;
+  margin-bottom: 1rem;
   font-weight: 700;
 }
 .cart-img img {
@@ -103,6 +103,9 @@ aside {
   aspect-ratio: 1;
   object-fit: cover;
   background-color: black;
+}
+.cart-img-small {
+  width: 65%;
 }
 aside a {
   color: black;
@@ -125,6 +128,18 @@ aside a:hover {
   justify-content: space-between;
   margin-bottom: 1rem;
 }
+.btn-add {
+  display: inline-flex;
+  font-family: inherit;
+  background-color: black;
+  color: white;
+  width: 1.2rem;
+  height: 1.2rem;
+  border-radius: 50%;
+  align-items: center;
+  justify-content: center;
+  line-height: 1;
+}
 .btn-end {
   font-family: inherit;
   font-size: 0.8rem;
@@ -133,11 +148,12 @@ aside a:hover {
   color: white;
   width: 100%;
   padding: 20px;
-  cursor: pointer;
 }
-.btn-end:hover {
+.btn-end:hover,
+.btn-add:hover {
   background-color: #333;
 }
+
 .cartOpen {
   right: 0;
   transition: all 0.5s ease;

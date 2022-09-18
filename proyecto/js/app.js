@@ -89,6 +89,13 @@ const eliminarPedido = (num) => {
   renderCarrito();
 };
 
+const modificarPedido = (num, op) => {
+  if (op == 1) {
+    if (cartArray[num].cantidad > 1) cartArray[num].cantidad--;
+  } else cartArray[num].cantidad++;
+  renderCarrito();
+};
+
 //Renderizo el carrito
 const renderCarrito = () => {
   //Elimino todos los nodos
@@ -99,14 +106,21 @@ const renderCarrito = () => {
     cartArray.forEach(function (item, index) {
       let cardClonada = itemCart.cloneNode(true);
       cardClonada.querySelector("img").src = `./assets/${item.imagen}`;
-      cardClonada.querySelector(".cart-title").innerHTML = `${item.nombre}<br>$${item.precio}.-`;
+      cardClonada.querySelector(".cart-title").innerHTML = `<strong>${item.nombre}</strong><br>$${item.precio}.-`;
       cardClonada.querySelector(".cart-amount").innerHTML = item.cantidad;
+      if (total > 4) cardClonada.querySelector(".cart-img img").classList.add("cart-img-small");
+
       cartContainer.appendChild(cardClonada);
 
-      //Escuchador
-      cardClonada.querySelector(".cart-delete button").addEventListener("click", (e) => {
-        e.preventDefault;
+      //Escuchadores
+      cardClonada.querySelector(".cart-delete button").addEventListener("click", () => {
         eliminarPedido(index);
+      });
+      cardClonada.querySelectorAll(".cart-add button")[0].addEventListener("click", (e) => {
+        modificarPedido(index, 0);
+      });
+      cardClonada.querySelectorAll(".cart-add button")[1].addEventListener("click", (e) => {
+        modificarPedido(index, 1);
       });
     });
     cartFooter.classList.remove("hide");
