@@ -97,12 +97,3 @@ while (op != "fin") {
     alert(`No ingresaste una opción valida ⚠️`);
   }
 }
-
-// productos.push(new Producto(100, "Mercurio", "Is the closest planet to the Sun, the smallest planet in the Solar System. Mercury has no natural satellites", "Rocoso", false, 2440, "mercury.png", 1000, 0));
-// productos.push(new Producto(200, "Venus", "Like Earth, has a thick silicate mantle around an iron core, a substantial atmosphere, and evidence of internal geological activity.", "Rocoso", false, 2440, "venus.png", 1000, 10));
-// productos.push(new Producto(300, "Tierra", "Is the largest and densest of the inner planets, the only one known to have current geological activity, and the only place where life is known to exist.", "Rocoso", false, 2440, "earth.png", 5000, 10));
-// productos.push(new Producto(400, "Marte", "Is smaller than Earth and Venus. It has an atmosphere of mostly carbon dioxide with a surface pressure of 6.1 millibars.", "Rocoso", false, 2440, "mars.png", 4000, 10));
-// productos.push(new Producto(500, "Jupiter", "Is 2.5 times the mass of all the other planets put together. It is composed largely of hydrogen and helium.", "Gaseoso", false, 2440, "jupiter.png", 2000, 10));
-// productos.push(new Producto(600, "Saturno", "Distinguished by its extensive ring system, has several similarities to Jupiter, such as its atmospheric composition and magnetosphere.", "Gaseoso", false, 2440, "saturn.png", 2000, 10));
-// productos.push(new Producto(700, "Urano", "Has the lowest mass of the outer planets. Uniquely among the planets, it orbits the Sun on its sid", "Gaseoso", false, 2440, "uranus.png", 1000, 0));
-// productos.push(new Producto(800, "Neptuno", "Though slightly smaller than Uranus, is more massive (17 MEarth) and hence more dense. ", "Gaseoso", false, 2440, "neptuno.png", 1000, 0));

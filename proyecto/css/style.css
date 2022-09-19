@@ -30,6 +30,7 @@ nav ul li {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  font-size: 1rem;
 }
 main {
   margin-top: 300px;
@@ -50,11 +51,10 @@ footer {
 .btn-article {
   font-family: inherit;
   font-size: 0.9rem;
-  border-bottom: 3px solid transparent;
   padding-bottom: 3px;
 }
 .btn-article:hover {
-  border-bottom: 3px solid var(--color-primary);
+  color: #666;
 }
 .btn-close {
   font-family: inherit;
@@ -90,7 +90,7 @@ aside {
 }
 .cart-item {
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr 50px 20px;
+  grid-template-columns: 55px 1fr 1fr 50px 20px;
   grid-gap: 1.3rem;
   padding-bottom: 1rem;
   border-bottom: 1px dashed black;
@@ -153,7 +153,6 @@ aside a:hover {
 .btn-add:hover {
   background-color: #333;
 }
-
 .cartOpen {
   right: 0;
   transition: all 0.5s ease;
