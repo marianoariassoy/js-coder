@@ -7,6 +7,7 @@
 
 :root {
   --color-primary: #17fd85;
+  --color-secondary: #fd17a5;
   --metric-box-spacing: 80px;
 }
 
@@ -62,6 +63,9 @@ a:hover {
 }
 .text-primary {
   color: var(--color-primary);
+}
+.text-secondary {
+  color: var(--color-secondary);
 }
 .text-gray {
   color: gray;

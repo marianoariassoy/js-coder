@@ -1,7 +1,9 @@
 //Variables globales
 const freeShiping = 5000;
 const iva = 0.28;
-const cartArray = [];
+
+//Carrito en el local stogare o vácio
+const cartArray = JSON.parse(localStorage.getItem("cart"));
 
 //Nodos y template del carrito
 const cartContainer = document.querySelector(".cart-list");
@@ -87,6 +89,8 @@ const renderizoCarrito = () => {
     cartFooter.classList.add("hide");
     cartEmpty.classList.remove("hide");
   }
+  //Guardo el carrito en el local storage
+  localStorage.setItem("cart", JSON.stringify(cartArray));
 };
 
 //Abrir y cerrar el carrito
@@ -95,3 +99,5 @@ const carritoClose = () => document.querySelector("aside").classList.remove("car
 document.querySelector(".cart-open button").addEventListener("click", carritoAbrir);
 document.querySelector(".cart-close button").addEventListener("click", carritoClose);
 document.querySelector(".btn-continue").addEventListener("click", carritoClose);
+
+renderizoCarrito();

@@ -22,7 +22,7 @@ for (let producto of productsArray) {
   let cardClonada = card.cloneNode(true);
   cardClonada.querySelector("img").src = `./assets/${producto.imagen}`;
   cardClonada.querySelector(".card-title").innerText = producto.nombre;
-  cardClonada.querySelector(".card-description").innerText = `It's a ${producto.tipo} planet with ${producto.radio} km. of radio<br>It ${lunas}.`;
+  cardClonada.querySelector(".card-description").innerText = `It's a ${producto.tipo} planet with ${producto.radio} km. of radio.\nIt ${lunas}.`;
   cardClonada.querySelector(".card-price").innerText = `$${producto.precio}`;
 
   //Escuchador
