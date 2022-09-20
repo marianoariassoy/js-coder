@@ -1,9 +1,11 @@
 //Variables globales
 const freeShiping = 5000;
 const iva = 0.28;
+const cartArray = [];
 
-//Carrito en el local stogare o vácio
-const cartArray = JSON.parse(localStorage.getItem("cart"));
+//Carrito en el local stogare
+const cartLocalStorage = JSON.parse(localStorage.getItem("cart"));
+if (cartLocalStorage) cartArray = cartLocalStorage;
 
 //Nodos y template del carrito
 const cartContainer = document.querySelector(".cart-list");
