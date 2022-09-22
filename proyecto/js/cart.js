@@ -76,7 +76,6 @@ const renderizoCarrito = () => {
       cardClonada.querySelector("img").src = `./assets/${item.imagen}`;
       cardClonada.querySelector(".cart-title").innerHTML = `<strong>${item.nombre}</strong><br>$${item.precio * item.cantidad}.-`;
       cardClonada.querySelector(".cart-amount").innerHTML = item.cantidad;
-      if (total > 4) cardClonada.querySelector(".cart-img img").classList.add("cart-img-small");
       cartContainer.appendChild(cardClonada);
       //Escuchadores
       cardClonada.querySelector(".cart-delete button").addEventListener("click", () => eliminarProducto(index));
@@ -95,11 +94,16 @@ const renderizoCarrito = () => {
   localStorage.setItem("cart", JSON.stringify(cartArray));
 };
 
-//Abrir y cerrar el carrito
+//Abrir y cerrar el carrito y filtros
 const carritoAbrir = () => document.querySelector("aside").classList.add("cartOpen");
 const carritoClose = () => document.querySelector("aside").classList.remove("cartOpen");
+const filtrosArbir = () => {
+  document.querySelector("nav").classList.toggle("hide");
+  document.querySelector(".logo").classList.toggle("hide");
+};
 document.querySelector(".cart-open button").addEventListener("click", carritoAbrir);
 document.querySelector(".cart-close button").addEventListener("click", carritoClose);
 document.querySelector(".btn-continue").addEventListener("click", carritoClose);
+document.querySelector(".menu a").addEventListener("click", filtrosArbir);
 
 renderizoCarrito();

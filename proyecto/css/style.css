@@ -90,7 +90,7 @@ aside {
 }
 .cart-item {
   display: grid;
-  grid-template-columns: 55px 1fr 1fr 50px 20px;
+  grid-template-columns: 38px 1fr 1fr 50px 20px;
   grid-gap: 1.3rem;
   padding-bottom: 1rem;
   border-bottom: 1px dashed black;
@@ -104,9 +104,6 @@ aside {
   object-fit: cover;
   background-color: black;
 }
-.cart-img-small {
-  width: 65%;
-}
 aside a {
   color: black;
 }
@@ -116,17 +113,17 @@ aside a:hover {
 .cart-total {
   width: 100%;
   font-variation-settings: "wght" 700;
-  font-size: 1.3rem;
+  font-size: 1.2rem;
   display: flex;
   justify-content: space-between;
-  margin-bottom: 2rem;
+  margin-bottom: 1rem;
 }
 .cart-subtotal {
   width: 100%;
   font-variation-settings: "wght" 600;
   display: flex;
   justify-content: space-between;
-  margin-bottom: 1rem;
+  margin-bottom: 0.6rem;
 }
 .btn-add {
   display: inline-flex;
