@@ -45,7 +45,7 @@ const modificarProducto = (num, op) => {
 const calcularMontos = () => {
   //Subtotal
   let subTotal = 0;
-  for (const item of cartArray) subTotal += item.precio * item.cantidad;
+  for (const item of cartArray) subTotal += item.price * item.cantidad;
   document.querySelector("#precio-subtotal").innerText = `$${subTotal}`;
   //Envio
   if (subTotal <= freeShiping) {
@@ -73,8 +73,8 @@ const renderizoCarrito = () => {
   if (total) {
     cartArray.forEach(function (item, index) {
       let cardClonada = itemCart.cloneNode(true);
-      cardClonada.querySelector("img").src = `./assets/${item.imagen}`;
-      cardClonada.querySelector(".cart-title").innerHTML = `<strong>${item.nombre}</strong><br>$${item.precio * item.cantidad}.-`;
+      cardClonada.querySelector("img").src = `./assets/${item.image}`;
+      cardClonada.querySelector(".cart-title").innerHTML = `<strong>${item.name}</strong><br>$${item.price * item.cantidad}.-`;
       cardClonada.querySelector(".cart-amount").innerHTML = item.cantidad;
       cartContainer.appendChild(cardClonada);
       //Escuchadores
@@ -106,4 +106,5 @@ document.querySelector(".cart-close button").addEventListener("click", carritoCl
 document.querySelector(".btn-continue").addEventListener("click", carritoClose);
 document.querySelector(".menu a").addEventListener("click", filtrosArbir);
 
+//Incio
 renderizoCarrito();
