@@ -101,7 +101,7 @@ const filtrosArbir = () => {
 document.querySelector(".cart-open button").addEventListener("click", cartOpen);
 document.querySelector(".cart-close button").addEventListener("click", cartClose);
 document.querySelector(".btn-continue").addEventListener("click", cartClose);
-document.querySelector(".menu a").addEventListener("click", filtrosArbir);
+document.querySelector(".menu button").addEventListener("click", filtrosArbir);
 
 //Incio
 cartRender();

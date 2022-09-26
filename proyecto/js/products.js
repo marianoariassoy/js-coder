@@ -31,9 +31,11 @@ productsArray.push(new Producto(6, "Saturn", "Gas giants", true, 58232, "saturn.
 productsArray.push(new Producto(7, "Uranus", "Gas giants", true, 25362, "uranus.png", 7000, 2721));
 productsArray.push(new Producto(8, "Neptune", "Gas giants", true, 24622, "neptuno.png", 8000, 4345));
 
-const renderizarCards = () => {
+const cardsRender = (array) => {
+  //Elimino todos los nodos
+  cardsContainer.innerHTML = "";
   //Renderizo las cards
-  for (let item of productsArray) {
+  for (let item of array) {
     let cardClonada = card.cloneNode(true);
     cardClonada.querySelector("img").src = `./assets/${item.image}`;
     cardClonada.querySelector(".card-title").innerText = item.name;
@@ -44,5 +46,32 @@ const renderizarCards = () => {
   }
 };
 
+//Filtros
+const addFilter = (i) => {
+  for (const item of buttonsFilters) item.classList.remove("text-primary");
+  buttonsFilters[i].classList.add("text-primary");
+  let productsFiltered;
+  switch (i) {
+    case 0:
+      productsFiltered = productsArray;
+      break;
+    case 1:
+      productsFiltered = productsArray.filter((item) => item.type === "Type: Terrestrial");
+      break;
+    case 2:
+      productsFiltered = productsArray.filter((item) => item.type === "Type: Gas giants");
+      break;
+    case 3:
+      productsFiltered = productsArray.filter((item) => item.moons === "Has one or more moons");
+      break;
+  }
+  cardsRender(productsFiltered);
+};
+
+const buttonsFilters = document.querySelectorAll(".addFilter");
+for (let i = 0; i < buttonsFilters.length; i++) {
+  buttonsFilters[i].addEventListener("click", () => addFilter(i));
+}
+
 //Inicio
-renderizarCards();
+cardsRender(productsArray);
