@@ -13,7 +13,7 @@ class Producto {
     this.type = `Type: ${type}`;
     if (moons) this.moons = "Has one or more moons";
     else this.moons = "Has no moons";
-    this.radius = `Radius: ${radius} million km.`;
+    this.radius = radius;
     this.image = image;
     this.price = price;
     this.distance = `Distance: ${distance} million km.`;
@@ -39,7 +39,7 @@ const cardsRender = (array) => {
     let cardClonada = card.cloneNode(true);
     cardClonada.querySelector("img").src = `./assets/${item.image}`;
     cardClonada.querySelector(".card-title").innerText = item.name;
-    cardClonada.querySelector(".card-description").innerText = ` ${item.distance}\n${item.type}\n${item.radius}\n${item.moons}`;
+    cardClonada.querySelector(".card-description").innerText = ` ${item.distance}\n${item.type}\nRadius: ${item.radius} million km.\n${item.moons}`;
     cardClonada.querySelector(".card-price").innerText = `$${item.price}`;
     cardClonada.querySelector("button").addEventListener("click", () => agregarProducto(item.id));
     cardsContainer.appendChild(cardClonada);
@@ -50,22 +50,36 @@ const cardsRender = (array) => {
 const addFilter = (i) => {
   for (const item of buttonsFilters) item.classList.remove("text-primary");
   buttonsFilters[i].classList.add("text-primary");
-  let productsFiltered;
+  let filtered;
+  const order = (a, b) => {
+    if (a.radius < b.radius) return -1;
+    if (a.radius < b.radius) return 1;
+    return 0;
+  };
+
   switch (i) {
     case 0:
-      productsFiltered = productsArray;
+      filtered = productsArray;
       break;
     case 1:
-      productsFiltered = productsArray.filter((item) => item.type === "Type: Terrestrial");
+      filtered = productsArray.filter((item) => item.type === "Type: Terrestrial");
       break;
     case 2:
-      productsFiltered = productsArray.filter((item) => item.type === "Type: Gas giants");
+      filtered = productsArray.filter((item) => item.type === "Type: Gas giants");
       break;
     case 3:
-      productsFiltered = productsArray.filter((item) => item.moons === "Has one or more moons");
+      filtered = productsArray.filter((item) => item.moons === "Has one or more moons");
+      break;
+    case 4:
+      filtered = productsArray.filter((item) => item.radius <= 6371);
+      filtered.sort(order);
+      break;
+    case 5:
+      filtered = productsArray.filter((item) => item.radius > 6371);
+      filtered.sort(order);
       break;
   }
-  cardsRender(productsFiltered);
+  cardsRender(filtered);
 };
 
 const buttonsFilters = document.querySelectorAll(".addFilter");
