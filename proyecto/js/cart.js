@@ -1,11 +1,9 @@
 //Variables globales
 const freeShiping = 5000;
 const iva = 0.28;
-let cartArray = [];
 
 //Carrito en el local stogare
-const cartLocalStorage = JSON.parse(localStorage.getItem("cart"));
-if (cartLocalStorage) cartArray = cartLocalStorage;
+const cartArray = JSON.parse(localStorage.getItem("cart")) || [];
 
 //Nodos y template del carrito
 const cartContainer = document.querySelector(".cart-list");
@@ -27,19 +25,18 @@ function agregarProducto(id) {
     //Sumo el producto al array del carrito
     cartArray.push({ ...product, cantidad: 1 });
   }
-  renderizoCarrito();
+  cartRender();
 }
 
-const eliminarProducto = (num) => {
+const productDelete = (num) => {
   cartArray.splice(num, 1);
-  renderizoCarrito();
+  cartRender();
 };
 
-const modificarProducto = (num, op) => {
-  if (op == 1) {
-    if (cartArray[num].cantidad > 1) cartArray[num].cantidad--;
-  } else cartArray[num].cantidad++;
-  renderizoCarrito();
+const productEdit = (num, op) => {
+  if (op == 1) cartArray[num].cantidad > 1 && cartArray[num].cantidad--;
+  else cartArray[num].cantidad++;
+  cartRender();
 };
 
 const calcularMontos = () => {
@@ -65,7 +62,7 @@ const calcularMontos = () => {
 };
 
 //Renderizo el carrito
-const renderizoCarrito = () => {
+const cartRender = () => {
   //Elimino todos los nodos
   cartContainer.innerHTML = "";
   //Veo si hay items en el array cartArray
@@ -78,14 +75,14 @@ const renderizoCarrito = () => {
       cardClonada.querySelector(".cart-amount").innerHTML = item.cantidad;
       cartContainer.appendChild(cardClonada);
       //Escuchadores
-      cardClonada.querySelector(".cart-delete button").addEventListener("click", () => eliminarProducto(index));
-      cardClonada.querySelectorAll(".cart-add button")[0].addEventListener("click", () => modificarProducto(index, 0));
-      cardClonada.querySelectorAll(".cart-add button")[1].addEventListener("click", () => modificarProducto(index, 1));
+      cardClonada.querySelector(".cart-delete button").addEventListener("click", () => productDelete(index));
+      cardClonada.querySelectorAll(".cart-add button")[0].addEventListener("click", () => productEdit(index, 0));
+      cardClonada.querySelectorAll(".cart-add button")[1].addEventListener("click", () => productEdit(index, 1));
     });
     cartFooter.classList.remove("hide");
     cartEmpty.classList.add("hide");
     calcularMontos();
-    carritoAbrir();
+    cartOpen();
   } else {
     cartFooter.classList.add("hide");
     cartEmpty.classList.remove("hide");
@@ -95,16 +92,16 @@ const renderizoCarrito = () => {
 };
 
 //Abrir y cerrar el carrito y filtros
-const carritoAbrir = () => document.querySelector("aside").classList.add("cartOpen");
-const carritoClose = () => document.querySelector("aside").classList.remove("cartOpen");
+const cartOpen = () => document.querySelector("aside").classList.add("cartOpen");
+const cartClose = () => document.querySelector("aside").classList.remove("cartOpen");
 const filtrosArbir = () => {
   document.querySelector("nav").classList.toggle("hide");
   document.querySelector(".logo").classList.toggle("hide");
 };
-document.querySelector(".cart-open button").addEventListener("click", carritoAbrir);
-document.querySelector(".cart-close button").addEventListener("click", carritoClose);
-document.querySelector(".btn-continue").addEventListener("click", carritoClose);
+document.querySelector(".cart-open button").addEventListener("click", cartOpen);
+document.querySelector(".cart-close button").addEventListener("click", cartClose);
+document.querySelector(".btn-continue").addEventListener("click", cartClose);
 document.querySelector(".menu a").addEventListener("click", filtrosArbir);
 
 //Incio
-renderizoCarrito();
+cartRender();
