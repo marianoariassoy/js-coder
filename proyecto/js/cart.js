@@ -15,13 +15,13 @@ const cartEmpty = document.querySelector(".cart-empty");
 //Funciones
 function agregarProducto(id) {
   //Reviso si el producto ya existe en el array del carrito
-  const total = cartArray.some((item) => item.id == id);
+  const total = cartArray.some((item) => item.id === id);
   if (total) {
     //Incremento la cantidad
-    cartArray.map((item) => (item.id == id ? item.cantidad++ : item.cantidad));
+    cartArray.map((item) => (item.id === id ? item.cantidad++ : item.cantidad));
   } else {
     //Busco el id en el array de productos
-    let product = productsArray.find((item) => item.id == id);
+    let product = productsArray.find((item) => item.id === id);
     //Sumo el producto al array del carrito
     cartArray.push({ ...product, cantidad: 1 });
   }
