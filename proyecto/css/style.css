@@ -18,14 +18,11 @@ nav ul li {
   margin-bottom: 1rem;
 }
 .content {
-  line-height: 1.5;
+  line-height: 1.4;
 }
 .card img {
   aspect-ratio: 1;
   object-fit: cover;
-}
-.card-title {
-  font-variation-settings: "wght" 600;
 }
 .content-price {
   display: flex;

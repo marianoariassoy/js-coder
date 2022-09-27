@@ -31,7 +31,8 @@ h2 {
 p {
   line-height: 1.4;
 }
-strong {
+strong,
+.strong {
   font-weight: normal;
   font-variation-settings: "wght" 700;
 }

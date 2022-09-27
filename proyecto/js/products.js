@@ -83,9 +83,7 @@ const addFilter = (i) => {
 };
 
 const buttonsFilters = document.querySelectorAll(".addFilter");
-for (let i = 0; i < buttonsFilters.length; i++) {
-  buttonsFilters[i].addEventListener("click", () => addFilter(i));
-}
+for (let i = 0; i < buttonsFilters.length; i++) buttonsFilters[i].addEventListener("click", () => addFilter(i));
 
 //Inicio
 cardsRender(productsArray);
