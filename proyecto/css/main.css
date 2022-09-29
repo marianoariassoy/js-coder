@@ -74,6 +74,9 @@ a:hover {
 .bg-primary {
   background-color: var(--color-primary);
 }
+.bg-white {
+  background-color: white;
+}
 
 /* Spacing */
 

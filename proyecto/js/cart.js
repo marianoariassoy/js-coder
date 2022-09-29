@@ -25,11 +25,25 @@ function agregarProducto(id) {
     //Sumo el producto al array del carrito
     cartArray.push({ ...product, cantidad: 1 });
   }
+  Toastify({
+    text: "Ticket added 💪",
+    style: {
+      background: "black",
+      color: "white",
+    },
+  }).showToast();
   cartRender();
 }
 
 const productDelete = (num) => {
   cartArray.splice(num, 1);
+  Toastify({
+    text: "Ticket was delete 😔",
+    style: {
+      background: "black",
+      color: "white",
+    },
+  }).showToast();
   cartRender();
 };
 
