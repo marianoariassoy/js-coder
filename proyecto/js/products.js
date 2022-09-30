@@ -16,7 +16,7 @@ class Producto {
     this.radius = radius;
     this.image = image;
     this.price = price;
-    this.distance = `Distance: ${distance} million km.`;
+    this.distance = distance;
   }
 }
 
@@ -39,7 +39,7 @@ const cardsRender = (array) => {
     let cardClonada = card.cloneNode(true);
     cardClonada.querySelector("img").src = `./assets/${item.image}`;
     cardClonada.querySelector(".card-title").innerText = item.name;
-    cardClonada.querySelector(".card-description").innerText = ` ${item.distance}\n${item.type}\nRadius: ${item.radius} million km.\n${item.moons}`;
+    cardClonada.querySelector(".card-description").innerText = ` Distance: ${item.distance} million km.\n${item.type}\nRadius: ${item.radius} million km.\n${item.moons}`;
     cardClonada.querySelector(".card-price").innerText = `$${item.price}`;
     cardClonada.querySelector("button").addEventListener("click", () => agregarProducto(item.id));
     cardsContainer.appendChild(cardClonada);

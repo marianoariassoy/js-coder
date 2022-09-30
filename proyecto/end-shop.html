@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Tickets to the sky 🚀</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+      integrity="sha512-9usAa10IRO0HhonpyAIVpjrylPvoDwiPUiKdWk5t3PyolY1cOd4DSE0Ga+ri4AuTroPR5aQvXU9xC6qOPnzFeg=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css" />
+
+    <link rel="stylesheet" href="./css/reset.css" />
+    <link rel="stylesheet" href="./css/main.css" />
+    <link rel="stylesheet" href="./css/style.css" />
+    <link rel="stylesheet" href="./css/mobile.css" />
+  </head>
+  <body>
+    <header>
+      <div class="menu">
+        <a href="index.html" class="btn-close text-white text-primary-hover">BACK</a>
+      </div>
+      <div class="header-logo text-center">
+        <h1 class="logo">Tickets to the sky 🚀</h1>
+      </div>
+      <div></div>
+    </header>
+    <main>
+      <section>
+        <div class="container-end bg-primary text-black">
+          <h2 class="mb-2">👉 Your information</h2>
+
+          <form method="post">
+            <label for="name">Name</label>
+            <input type="text" name="name" id="name" placeholder="elon musk" required class="mb-1 w-100" />
+            <label for="passport">Intergalactic passport</label>
+            <input type="text" name="passport" placeholder="22 12313 22" id="passport" required class="mb-1 w-100" />
+            <label for="email">E.mail</label>
+            <input type="email" name="email" id="email" placeholder="hi@youremail.com" required class="mb-3 w-100" />
+
+            <h2 class="mb-2">👉 Your trip in order</h2>
+
+            <div class="container-travel mb-2">
+              <template id="template-travel">
+                <article class="travel-item">
+                  <div class="travel-img">
+                    <img src="" alt="" />
+                  </div>
+                </article>
+              </template>
+            </div>
+
+            <h2 class="mb-2">👉 Your order</h2>
+
+            <div class="order w-100 mb-2">
+              <div class="cart-subtotal">
+                <div>Subtotal:</div>
+                <div class="text-right" id="precio-subtotal">$0</div>
+              </div>
+              <div class="cart-subtotal">
+                <div>Shiping:</div>
+                <div class="text-right" id="precio-shiping">$0<br /></div>
+              </div>
+              <div class="cart-subtotal">
+                <div>Taxes:</div>
+                <div class="text-right" id="precio-iva">$0</div>
+              </div>
+              <div class="cart-total">
+                <div>Total:</div>
+                <div class="text-right" id="precio-final">$0</div>
+              </div>
+            </div>
+            <button type="submit" class="btn-end">PAY</button>
+          </form>
+        </div>
+      </section>
+    </main>
+    <footer class="text-center">
+      <p>
+        Development Mariano Arias for CoderHouse 2022 💪 <br />
+        Teacher: Omar Maniás 💯 Tutor: Julio Caro
+      </p>
+    </footer>
+    <canvas id="cnv"></canvas>
+    <script src="./js/end-shop.js"></script>
+    <script src="./js/bg-stars.js"></script>
+
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
+  </body>
+</html>

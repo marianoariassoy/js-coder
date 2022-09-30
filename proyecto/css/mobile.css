@@ -9,7 +9,7 @@
     font-size: 90%;
   }
   aside {
-    max-width: 900px;
+    /* max-width: 900px; */
   }
   nav ul li {
     display: block;
