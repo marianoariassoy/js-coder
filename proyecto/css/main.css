@@ -7,7 +7,7 @@
 
 :root {
   --color-primary: #17fd85;
-  --color-secondary: #383838;
+  --color-secondary: #313131;
   --metric-box-spacing: 80px;
 }
 
@@ -55,6 +55,11 @@ button:hover {
 }
 a:hover {
   color: var(--color-primary);
+}
+
+.shadow:hover {
+  box-shadow: 0px 0px 20px 5px rgba(0, 0, 0, 0.3);
+  transition: all 0.2s ease;
 }
 
 /* Colors */

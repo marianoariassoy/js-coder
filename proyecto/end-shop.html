@@ -25,26 +25,31 @@
         <a href="index.html" class="btn-close text-white text-primary-hover">BACK</a>
       </div>
       <div class="header-logo text-center">
-        <h1 class="logo">Tickets to the sky 🚀</h1>
+        <h1 class="logo">Travel to the sky 🚀</h1>
       </div>
       <div></div>
     </header>
     <main>
-      <section>
-        <div class="container-end bg-primary text-black">
-          <h2 class="mb-2">👉 Your information</h2>
-
+      <div class="container grid-end-shop">
+        <section class="bg-primary text-black p-2">
           <form method="post">
+            <h2 class="mb-2">Your information 🙂</h2>
             <label for="name">Name</label>
-            <input type="text" name="name" id="name" placeholder="elon musk" required class="mb-1 w-100" />
-            <label for="passport">Intergalactic passport</label>
-            <input type="text" name="passport" placeholder="22 12313 22" id="passport" required class="mb-1 w-100" />
+            <input type="text" name="name" id="name" placeholder="Elon Musk" required class="mb-1 w-100" />
+            <label for="passport">Passport</label>
+            <input type="text" name="passport" placeholder="12 34567 89" id="passport" required class="mb-1 w-100" />
             <label for="email">E.mail</label>
-            <input type="email" name="email" id="email" placeholder="hi@youremail.com" required class="mb-3 w-100" />
+            <input type="email" name="email" id="email" placeholder="hi@domain.com" required class="mb-1 w-100" />
+            <label for="address">Address</label>
+            <input type="text" name="address" placeholder="502 I St NE Miami, Oklahoma(OK)" id="address" required class="mb-1 w-100" />
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ad eum distinctio quaerat, soluta voluptas pariatur omnis odit aliquam perspiciatis asperiores dicta illum quasi.</p>
+          </form>
+        </section>
 
-            <h2 class="mb-2">👉 Your trip in order</h2>
-
-            <div class="container-travel mb-2">
+        <section class="bg-secondary p-2 text-black">
+          <h2 class="mb-2">👉 Travel itinerary</h2>
+          <div class="container-itinarary mb-2">
+            <div class="container-travel mb-1">
               <template id="template-travel">
                 <article class="travel-item">
                   <div class="travel-img">
@@ -53,31 +58,31 @@
                 </article>
               </template>
             </div>
+            <p class="travel-txt"></p>
+          </div>
 
-            <h2 class="mb-2">👉 Your order</h2>
-
-            <div class="order w-100 mb-2">
-              <div class="cart-subtotal">
-                <div>Subtotal:</div>
-                <div class="text-right" id="precio-subtotal">$0</div>
-              </div>
-              <div class="cart-subtotal">
-                <div>Shiping:</div>
-                <div class="text-right" id="precio-shiping">$0<br /></div>
-              </div>
-              <div class="cart-subtotal">
-                <div>Taxes:</div>
-                <div class="text-right" id="precio-iva">$0</div>
-              </div>
-              <div class="cart-total">
-                <div>Total:</div>
-                <div class="text-right" id="precio-final">$0</div>
-              </div>
+          <h2 class="mb-2">👉 Final order</h2>
+          <div class="order w-100 mb-2">
+            <div class="cart-subtotal">
+              <div>Subtotal:</div>
+              <div class="text-right" id="precio-subtotal"></div>
             </div>
-            <button type="submit" class="btn-end">PAY</button>
-          </form>
-        </div>
-      </section>
+            <div class="cart-subtotal">
+              <div>Shiping:</div>
+              <div class="text-right" id="precio-shiping"></div>
+            </div>
+            <div class="cart-subtotal">
+              <div>Taxes:</div>
+              <div class="text-right" id="precio-iva"></div>
+            </div>
+            <div class="cart-total">
+              <div>Total:</div>
+              <div class="text-right" id="precio-final"></div>
+            </div>
+          </div>
+          <button type="submit" class="btn-end shadow">LIFT OFF 🚀</button>
+        </section>
+      </div>
     </main>
     <footer class="text-center">
       <p>

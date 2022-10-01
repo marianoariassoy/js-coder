@@ -22,13 +22,21 @@ const itemCart = templateItemCart.content.querySelector("article");
 const cartRender = () => {
   //Elimino todos los nodos
   cartContainer.innerHTML = "";
-  //Veo si hay items en el array cartArray
 
-  cartArray.forEach(function (item, index) {
+  cartArray.forEach((item) => {
     let cardClonada = itemCart.cloneNode(true);
     cardClonada.querySelector("img").src = `./assets/${item.image}`;
     cartContainer.appendChild(cardClonada);
   });
+
+  //Texto descriptivo cuando son mas de 3 productos
+  if (cartArray.length >= 3) {
+    let rest = "";
+    let arrayAux = cartArray.filter((item, index) => index > 0 && index < cartArray.length - 1);
+    arrayAux.forEach((item) => (rest += item.name + ", "));
+    const text = `Your journey begins on ${cartArray[0].name}, continues with ${rest} and ends on ${cartArray[cartArray.length - 1].name}.`;
+    document.querySelector(".travel-txt").innerText = text;
+  }
 };
 
 //Calcular Montos
@@ -43,7 +51,7 @@ const calcularMontos = () => {
     document.querySelector("#precio-shiping").innerHTML = `$${costoEnvio} <br><small>Free shipping from $${freeShiping}</small>`;
   } else {
     costoEnvio = 0;
-    document.querySelector("#precio-shiping").innerText = `$${costoEnvio}`;
+    document.querySelector("#precio-shiping").innerHTML = `$${costoEnvio} <br><small>Free shipping</small>`;
   }
   //Impuestos
   let ivaFinal = Math.round(subTotal * iva);
