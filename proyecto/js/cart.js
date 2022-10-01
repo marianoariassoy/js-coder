@@ -53,28 +53,6 @@ const productEdit = (num, op) => {
   cartRender();
 };
 
-const calcularMontos = () => {
-  //Subtotal
-  let subTotal = 0;
-  for (const item of cartArray) subTotal += item.price * item.cantidad;
-  document.querySelector("#precio-subtotal").innerText = `$${subTotal}`;
-  //Envio
-  if (subTotal <= freeShiping) {
-    costoEnvio = 500;
-    document.querySelector("#precio-shiping").innerHTML = `$${costoEnvio} <br><small>Free shipping from $${freeShiping}</small>`;
-  } else {
-    costoEnvio = 0;
-    document.querySelector("#precio-shiping").innerText = `$${costoEnvio}`;
-  }
-  //Impuestos
-  let ivaFinal = Math.round(subTotal * iva);
-  document.querySelector("#precio-iva").innerHTML = `$${ivaFinal}`;
-  //Precio final
-  let costofinal = subTotal + costoEnvio + ivaFinal;
-  let costoFinalCoutas = Math.round(costofinal / 12);
-  document.querySelector("#precio-final").innerHTML = `$${costofinal} <br><small>Pay in 12 parts of $${costoFinalCoutas}</small>`;
-};
-
 //Renderizo el carrito
 const cartRender = () => {
   //Elimino todos los nodos
@@ -95,7 +73,6 @@ const cartRender = () => {
     });
     cartFooter.classList.remove("hide");
     cartEmpty.classList.add("hide");
-    calcularMontos();
     cartOpen();
   } else {
     cartFooter.classList.add("hide");

@@ -80,7 +80,7 @@
               <div class="text-right" id="precio-final"></div>
             </div>
           </div>
-          <button type="submit" class="btn-end shadow">LIFT OFF 🚀</button>
+          <button type="submit" class="btn-end shadow" id="btn-lift-off">LIFT OFF 🚀</button>
         </section>
       </div>
     </main>
@@ -91,9 +91,16 @@
       </p>
     </footer>
     <canvas id="cnv"></canvas>
+
+    <div class="overlay hide" id="modal-overlay">
+      <div class="modal bg-primary p-2 text-black">
+        <p class="modal-txt mb-1"></p>
+        <a href="index.html" class="btn-end shadow text-center">CLOSE</a>
+      </div>
+    </div>
+
     <script src="./js/end-shop.js"></script>
     <script src="./js/bg-stars.js"></script>
-
     <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
   </body>
 </html>
