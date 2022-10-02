@@ -63,7 +63,7 @@ const cartRender = () => {
     cartArray.forEach(function (item, index) {
       let cardClonada = itemCart.cloneNode(true);
       cardClonada.querySelector("img").src = `./assets/${item.image}`;
-      cardClonada.querySelector(".cart-title").innerHTML = `<strong>${item.name}</strong><br>$${item.price * item.cantidad}.-`;
+      cardClonada.querySelector(".cart-title").innerHTML = `<strong>${item.name}</strong><br>$${item.price * item.cantidad} M.`;
       cardClonada.querySelector(".cart-amount").innerHTML = item.cantidad;
       cartContainer.appendChild(cardClonada);
       //Escuchadores
@@ -88,6 +88,7 @@ const cartClose = () => document.querySelector("aside").classList.remove("cartOp
 const filtrosArbir = () => {
   document.querySelector("nav").classList.toggle("hide");
   document.querySelector(".logo").classList.toggle("hide");
+  document.querySelector(".nasa-logo").classList.toggle("hide");
 };
 document.querySelector(".cart-open button").addEventListener("click", cartOpen);
 document.querySelector(".cart-close button").addEventListener("click", cartClose);

@@ -14,7 +14,7 @@ header {
 nav ul li {
   display: inline;
   margin: 0 20px;
-  font-size: 1.2rem;
+  font-size: 1rem;
   margin-bottom: 1rem;
 }
 .content {
@@ -31,7 +31,7 @@ nav ul li {
   font-size: 1rem;
 }
 main {
-  margin-top: 300px;
+  margin-top: 22rem;
 }
 canvas {
   background: #000;
@@ -43,7 +43,7 @@ canvas {
   left: 0;
 }
 footer {
-  margin-top: 5rem;
+  margin-top: 4rem;
   padding: var(--metric-box-spacing);
 }
 .btn-article {
@@ -88,7 +88,7 @@ aside {
 }
 .cart-item {
   display: grid;
-  grid-template-columns: 38px 1fr 1fr 50px 20px;
+  grid-template-columns: 40px 1fr 50px 50px 15px;
   grid-gap: 1.3rem;
   padding-bottom: 1rem;
   border-bottom: 1px dashed black;
