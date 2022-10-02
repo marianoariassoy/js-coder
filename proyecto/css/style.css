@@ -2,9 +2,9 @@ header {
   position: fixed;
   top: 90px;
   width: 100%;
-  display: flex;
-  justify-content: space-between;
+  display: grid;
   align-items: center;
+  grid-template-columns: 1fr 4fr 1fr;
   height: 80px;
   padding: 0 var(--metric-box-spacing);
 }

@@ -8,13 +8,16 @@
   body {
     font-size: 90%;
   }
-  aside {
-    /* max-width: 900px; */
+  h1 {
+    font-size: 1rem;
   }
   nav ul li {
     display: block;
     margin: 0;
-    font-size: 1rem;
     margin-bottom: 0.5rem;
+  }
+  .grid-end-shop {
+    display: block;
+    grid-template-columns: none;
   }
 }
