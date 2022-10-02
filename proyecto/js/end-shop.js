@@ -18,6 +18,9 @@ const cartContainer = document.querySelector(".container-travel");
 const templateItemCart = document.querySelector("#template-travel");
 const itemCart = templateItemCart.content.querySelector("article");
 
+//Agrego a La Tierra en primer lugar donde comienza el itinerario
+cartArray.unshift({ name: "Earth", image: "earth.png", price: 0, distance: 0, cantidad: 1 });
+
 //Renderizo el carrito
 const cartRender = () => {
   //Elimino todos los nodos
@@ -29,15 +32,20 @@ const cartRender = () => {
     cartContainer.appendChild(cardClonada);
   });
 
-  //Texto descriptivo cuando son mas de 3 productos
+  //Texto para el itenerario
+  let rest = "";
+  let text = "";
+  const distance = cartArray.reduce((sum, val) => sum + val.distance, 0);
+
   if (cartArray.length >= 3) {
-    let rest = "";
     let arrayAux = cartArray.filter((item, index) => index > 0 && index < cartArray.length - 1);
     arrayAux.forEach((item) => (rest += item.name + ", "));
     rest = rest.substring(0, rest.length - 2);
-    const text = `Your journey begins on ${cartArray[0].name}, continues with ${rest} and ends on ${cartArray[cartArray.length - 1].name}.`;
-    document.querySelector(".travel-txt").innerText = text;
+    text = `Your journey begins on ${cartArray[0].name}, continues with ${rest} and ends on ${cartArray[cartArray.length - 1].name}.`;
+  } else {
+    text = `Your journey begins on ${cartArray[0].name} and ends on ${cartArray[1].name}.`;
   }
+  document.querySelector(".travel-txt").innerHTML = `${text} <br><strong>Total distance: ${distance}. million Km.</strong> `;
 };
 
 //Calcular Montos
