@@ -55,7 +55,6 @@ const addFilter = (i) => {
     if (a.radius < b.radius) return 1;
     return 0;
   };
-
   switch (i) {
     case 0:
       filtered = productsArray;

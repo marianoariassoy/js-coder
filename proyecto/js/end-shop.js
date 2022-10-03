@@ -2,6 +2,11 @@
 const freeShiping = 5000;
 const iva = 0.28;
 
+//Template
+const cartContainer = document.querySelector(".container-travel");
+const templateItemCart = document.querySelector("#template-travel");
+const itemCart = templateItemCart.content.querySelector("article");
+
 //Carrito en el local stogare
 const cartArray = JSON.parse(localStorage.getItem("cart")) || [];
 
@@ -12,11 +17,6 @@ const order = (a, b) => {
   return 0;
 };
 cartArray.sort(order);
-
-//Template
-const cartContainer = document.querySelector(".container-travel");
-const templateItemCart = document.querySelector("#template-travel");
-const itemCart = templateItemCart.content.querySelector("article");
 
 //Agrego a La Tierra en primer lugar donde comienza el itinerario
 cartArray.unshift({ name: "Earth", image: "earth.png", price: 0, distance: 0, cantidad: 1 });
