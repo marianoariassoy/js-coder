@@ -80,17 +80,16 @@ const modalOpen = () => {
   if (!name) {
     error = true;
     Toastify({
-      text: "Need your name ⚠",
+      text: "⚠️ Please enter your name",
       style: {
         background: "black",
         color: "white",
       },
     }).showToast();
-  }
-  if (!email) {
+  } else if (!email) {
     error = true;
     Toastify({
-      text: "Need your email ⚠",
+      text: "⚠️ Please enter your email",
       style: {
         background: "black",
         color: "white",
