@@ -1,0 +1,10 @@
+[
+  { "id": 0, "name": "Moon", "type": "Type: Terrestrial", "moons": "Has no moons", "radius": 1737, "image": "moon.png", "price": 1000, "distance": 0.4 },
+  { "id": 4, "name": "Mars", "type": "Type: Terrestrial", "moons": "Has one or more moons", "radius": 3390, "image": "mars.png", "price": 2000, "distance": 78 },
+  { "id": 5, "name": "Jupiter", "type": "Type: Gas giants", "moons": "Has one or more moons", "radius": 69911, "image": "jupiter.png", "price": 4000, "distance": 629 },
+  { "id": 6, "name": "Saturn", "type": "Type: Gas giants", "moons": "Has one or more moons", "radius": 58232, "image": "saturn.png", "price": 5000, "distance": 1284 },
+  { "id": 1, "name": "Mercury", "type": "Type: Terrestrial", "moons": "Has no moons", "radius": 2440, "image": "mercury.png", "price": 3000, "distance": 92 },
+  { "id": 2, "name": "Venus", "type": "Type: Terrestrial", "moons": "Has no moons", "radius": 6052, "image": "venus.png", "price": 2000, "distance": 42 },
+  { "id": 7, "name": "Uranus", "type": "Type: Gas giants", "moons": "Has one or more moons", "radius": 25362, "image": "uranus.png", "price": 7000, "distance": 2721 },
+  { "id": 8, "name": "Neptune", "type": "Type: Gas giants", "moons": "Has one or more moons", "radius": 24622, "image": "neptuno.png", "price": 8000, "distance": 4345 }
+]

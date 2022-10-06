@@ -1,12 +1,7 @@
-const productsArray = [];
-const cardsContainer = document.querySelector(".cards-container");
+const planetasArray = [];
 
-//Template
-const templateCard = document.querySelector("#template-cards");
-const card = templateCard.content.querySelector("article");
-
-//Clase Producto
-class Producto {
+//Clase Planetas
+class Planetas {
   constructor(id, name, type, moons, radius, image, price, distance) {
     this.id = id;
     this.name = name;
@@ -20,20 +15,14 @@ class Producto {
   }
 }
 
-//Agrego items al listado de items
-productsArray.push(new Producto(0, "Moon", "Terrestrial", false, 1737, "moon.png", 1000, 0.4));
-productsArray.push(new Producto(4, "Mars", "Terrestrial", true, 3390, "mars.png", 2000, 78));
-productsArray.push(new Producto(5, "Jupiter", "Gas giants", true, 69911, "jupiter.png", 4000, 629));
-productsArray.push(new Producto(6, "Saturn", "Gas giants", true, 58232, "saturn.png", 5000, 1284));
-productsArray.push(new Producto(1, "Mercury", "Terrestrial", false, 2440, "mercury.png", 3000, 92));
-productsArray.push(new Producto(2, "Venus", "Terrestrial", false, 6052, "venus.png", 2000, 42));
-productsArray.push(new Producto(7, "Uranus", "Gas giants", true, 25362, "uranus.png", 7000, 2721));
-productsArray.push(new Producto(8, "Neptune", "Gas giants", true, 24622, "neptuno.png", 8000, 4345));
+//Nodos
+const cardsContainer = document.querySelector(".cards-container");
+const templateCard = document.querySelector("#template-cards");
+const card = templateCard.content.querySelector("article");
 
 const cardsRender = (array) => {
-  //Elimino todos los nodos
+  //Elimino todos los nodos y renderizo las cards
   cardsContainer.innerHTML = "";
-  //Renderizo las cards
   for (let item of array) {
     let cardClonada = card.cloneNode(true);
     cardClonada.querySelector("img").src = `./assets/${item.image}`;
@@ -57,23 +46,23 @@ const addFilter = (i) => {
   };
   switch (i) {
     case 0:
-      filtered = productsArray;
+      filtered = planetasArray;
       break;
     case 1:
-      filtered = productsArray.filter((item) => item.type === "Type: Terrestrial");
+      filtered = planetasArray.filter((item) => item.type === "Type: Terrestrial");
       break;
     case 2:
-      filtered = productsArray.filter((item) => item.type === "Type: Gas giants");
+      filtered = planetasArray.filter((item) => item.type === "Type: Gas giants");
       break;
     case 3:
-      filtered = productsArray.filter((item) => item.moons === "Has one or more moons");
+      filtered = planetasArray.filter((item) => item.moons === "Has one or more moons");
       break;
     case 4:
-      filtered = productsArray.filter((item) => item.radius <= 6371);
+      filtered = planetasArray.filter((item) => item.radius <= 6371);
       filtered.sort(order);
       break;
     case 5:
-      filtered = productsArray.filter((item) => item.radius > 6371);
+      filtered = planetasArray.filter((item) => item.radius > 6371);
       filtered.sort(order);
       break;
   }
@@ -84,4 +73,11 @@ const buttonsFilters = document.querySelectorAll(".addFilter");
 for (let i = 0; i < buttonsFilters.length; i++) buttonsFilters[i].addEventListener("click", () => addFilter(i));
 
 //Inicio
-cardsRender(productsArray);
+fetch("./data.json")
+  .then((res) => res.json())
+  .then((data) => {
+    data.forEach((post) => {
+      planetasArray.push(new Planetas(post.id, post.name, post.type, post.moons, post.radius, post.image, post.price, post.distance));
+    });
+  })
+  .then(() => cardsRender(planetasArray));
