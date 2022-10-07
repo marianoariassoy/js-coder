@@ -1,4 +1,4 @@
-const planetasArray = [];
+let planetasArray = [];
 
 //Nodos
 const cardsContainer = document.querySelector(".cards-container");
@@ -60,9 +60,12 @@ const buttonsFilters = document.querySelectorAll(".addFilter");
 for (let i = 0; i < buttonsFilters.length; i++) buttonsFilters[i].addEventListener("click", () => addFilter(i));
 
 //Inicio
-fetch("./data.json")
-  .then((res) => res.json())
-  .then((data) => {
-    planetasArray.push(...data);
-    cardsRender(planetasArray);
-  });
+async function fetchProductos() {
+  const response = await fetch("./data.json");
+  return await response.json();
+}
+
+fetchProductos().then((data) => {
+  planetasArray = data;
+  cardsRender(planetasArray);
+});

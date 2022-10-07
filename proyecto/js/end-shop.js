@@ -1,11 +1,11 @@
 //Variables globales
-const freeShiping = 5000;
-const iva = 0.28;
+const freeShiping = 5000,
+  iva = 0.28;
 
 //Template
-const cartContainer = document.querySelector(".container-travel");
-const templateItemCart = document.querySelector("#template-travel");
-const itemCart = templateItemCart.content.querySelector("article");
+const cartContainer = document.querySelector(".container-travel"),
+  templateItemCart = document.querySelector("#template-travel"),
+  itemCart = templateItemCart.content.querySelector("article");
 
 //Carrito en el local stogare
 const cartArray = JSON.parse(localStorage.getItem("cart")) || [];
@@ -76,6 +76,7 @@ const modalOpen = () => {
   let error = false;
   let name = document.querySelector("#name").value;
   let email = document.querySelector("#email").value;
+  let card = document.querySelector("#card").value;
 
   if (!name) {
     error = true;
@@ -95,6 +96,15 @@ const modalOpen = () => {
         color: "white",
       },
     }).showToast();
+  } else if (!card) {
+    error = true;
+    Toastify({
+      text: "⚠️ Please enter your credit card number",
+      style: {
+        background: "black",
+        color: "white",
+      },
+    }).showToast();
   }
 
   if (!error) {
@@ -105,6 +115,14 @@ const modalOpen = () => {
   }
 };
 document.querySelector("#btn-lift-off").addEventListener("click", modalOpen);
+
+const cleaveCard = new Cleave("#card", {
+  creditCard: true,
+});
+const cleaveExpire = new Cleave("#expire", {
+  date: true,
+  datePattern: ["m", "y"],
+});
 
 //Incio
 cartRender();
