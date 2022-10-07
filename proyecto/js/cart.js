@@ -1,7 +1,3 @@
-//Variables globales
-const freeShiping = 5000;
-const iva = 0.28;
-
 //Carrito en el local stogare
 const cartArray = JSON.parse(localStorage.getItem("cart")) || [];
 

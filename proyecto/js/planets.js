@@ -1,20 +1,5 @@
 const planetasArray = [];
 
-//Clase Planetas
-class Planetas {
-  constructor(id, name, type, moons, radius, image, price, distance) {
-    this.id = id;
-    this.name = name;
-    this.type = `Type: ${type}`;
-    if (moons) this.moons = "Has one or more moons";
-    else this.moons = "Has no moons";
-    this.radius = radius;
-    this.image = image;
-    this.price = price;
-    this.distance = distance;
-  }
-}
-
 //Nodos
 const cardsContainer = document.querySelector(".cards-container");
 const templateCard = document.querySelector("#template-cards");
@@ -25,9 +10,10 @@ const cardsRender = (array) => {
   cardsContainer.innerHTML = "";
   for (let item of array) {
     let cardClonada = card.cloneNode(true);
+    item.moons ? (moons = "Has one or more moons") : (moons = "Has no moons");
     cardClonada.querySelector("img").src = `./assets/${item.image}`;
     cardClonada.querySelector(".card-title").innerText = item.name;
-    cardClonada.querySelector(".card-description").innerText = ` Distance: ${item.distance} million km.\n${item.type}\nRadius: ${item.radius} million km.\n${item.moons}`;
+    cardClonada.querySelector(".card-description").innerText = ` Distance: ${item.distance} million km.\nType: ${item.type}\nRadius: ${item.radius} million km.\n${moons}`;
     cardClonada.querySelector(".card-price").innerText = `$${item.price} M.`;
     cardClonada.querySelector("button").addEventListener("click", () => agregarProducto(item.id));
     cardsContainer.appendChild(cardClonada);
@@ -49,13 +35,13 @@ const addFilter = (i) => {
       filtered = planetasArray;
       break;
     case 1:
-      filtered = planetasArray.filter((item) => item.type === "Type: Terrestrial");
+      filtered = planetasArray.filter((item) => item.type === "Terrestrial");
       break;
     case 2:
-      filtered = planetasArray.filter((item) => item.type === "Type: Gas giants");
+      filtered = planetasArray.filter((item) => item.type === "Gas giants");
       break;
     case 3:
-      filtered = planetasArray.filter((item) => item.moons === "Has one or more moons");
+      filtered = planetasArray.filter((item) => item.moons === true);
       break;
     case 4:
       filtered = planetasArray.filter((item) => item.radius <= 6371);
@@ -66,6 +52,7 @@ const addFilter = (i) => {
       filtered.sort(order);
       break;
   }
+
   cardsRender(filtered);
 };
 
@@ -76,8 +63,6 @@ for (let i = 0; i < buttonsFilters.length; i++) buttonsFilters[i].addEventListen
 fetch("./data.json")
   .then((res) => res.json())
   .then((data) => {
-    data.forEach((post) => {
-      planetasArray.push(new Planetas(post.id, post.name, post.type, post.moons, post.radius, post.image, post.price, post.distance));
-    });
-  })
-  .then(() => cardsRender(planetasArray));
+    planetasArray.push(...data);
+    cardsRender(planetasArray);
+  });
