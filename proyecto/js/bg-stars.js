@@ -1,7 +1,7 @@
 //Get context and screen size;
-var ctx = cnv.getContext("2d");
-var W = window.innerWidth;
-var H = window.innerHeight;
+let ctx = cnv.getContext("2d");
+let W = window.innerWidth;
+let H = window.innerHeight;
 
 //Set Canvas and Background Color;
 cnv.width = W;
@@ -25,15 +25,12 @@ paintStars = () => {
   ctx.fill();
 };
 
-for (let index = 0; index < 100; index++) {
-  paintStars();
-}
+for (let index = 0; index < 100; index++) paintStars();
 
 let count = 1;
 
 animate = () => {
   paintStars();
-
   if (count < 200) {
     count++;
     setTimeout(animate, 700);
