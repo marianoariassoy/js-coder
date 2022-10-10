@@ -60,10 +60,17 @@ const buttonsFilters = document.querySelectorAll(".addFilter");
 for (let i = 0; i < buttonsFilters.length; i++) buttonsFilters[i].addEventListener("click", () => addFilter(i));
 
 async function getData() {
-  let res = await fetch("./data.json"),
-    json = await res.json();
-  planetsArray = json;
-  cardsRender(planetsArray);
+  try {
+    let res = await fetch("./assets/data.json"),
+      json = await res.json();
+    if (!res.ok) throw { status: res.status, statusText: res.statusText };
+    planetsArray = json;
+    cardsRender(planetsArray);
+  } catch (err) {
+    console.log(err);
+    let message = err.statusText || "Ocurrió un error";
+    cardsContainer.innerHTML = `Error ${err.status}: ${message}`;
+  }
 }
 
 //Inicio
