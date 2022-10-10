@@ -17,7 +17,7 @@ function agregarProducto(id) {
     cartArray.map((item) => (item.id == id ? item.cantidad++ : item.cantidad));
   } else {
     //Busco el id en el array de productos
-    let product = planetasArray.find((item) => item.id == id);
+    let product = planetsArray.find((item) => item.id == id);
     //Sumo el producto al array del carrito
     cartArray.push({ ...product, cantidad: 1 });
   }

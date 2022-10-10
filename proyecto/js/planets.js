@@ -1,4 +1,4 @@
-let planetasArray = [];
+let planetsArray = [];
 
 //Nodos
 const cardsContainer = document.querySelector(".cards-container");
@@ -32,23 +32,23 @@ const addFilter = (i) => {
   };
   switch (i) {
     case 0:
-      filtered = planetasArray;
+      filtered = planetsArray;
       break;
     case 1:
-      filtered = planetasArray.filter((item) => item.type === "Terrestrial");
+      filtered = planetsArray.filter((item) => item.type === "Terrestrial");
       break;
     case 2:
-      filtered = planetasArray.filter((item) => item.type === "Gas giants");
+      filtered = planetsArray.filter((item) => item.type === "Gas giants");
       break;
     case 3:
-      filtered = planetasArray.filter((item) => item.moons === true);
+      filtered = planetsArray.filter((item) => item.moons === true);
       break;
     case 4:
-      filtered = planetasArray.filter((item) => item.radius <= 6371);
+      filtered = planetsArray.filter((item) => item.radius <= 6371);
       filtered.sort(order);
       break;
     case 5:
-      filtered = planetasArray.filter((item) => item.radius > 6371);
+      filtered = planetsArray.filter((item) => item.radius > 6371);
       filtered.sort(order);
       break;
   }
@@ -59,13 +59,12 @@ const addFilter = (i) => {
 const buttonsFilters = document.querySelectorAll(".addFilter");
 for (let i = 0; i < buttonsFilters.length; i++) buttonsFilters[i].addEventListener("click", () => addFilter(i));
 
-//Inicio
-async function fetchProductos() {
-  const response = await fetch("./data.json");
-  return await response.json();
+async function getData() {
+  let res = await fetch("./data.json"),
+    json = await res.json();
+  planetsArray = json;
+  cardsRender(planetsArray);
 }
 
-fetchProductos().then((data) => {
-  planetasArray = data;
-  cardsRender(planetasArray);
-});
+//Inicio
+getData();
