@@ -63,9 +63,9 @@ async function getData() {
   try {
     let res = await fetch("./assets/data.json"),
       json = await res.json();
-    if (!res.ok) throw { status: res.status, statusText: res.statusText };
     planetsArray = json;
     cardsRender(planetsArray);
+    if (!res.ok) throw { status: res.status, statusText: res.statusText };
   } catch (err) {
     console.log(err);
     let message = err.statusText || "Ocurrió un error";
