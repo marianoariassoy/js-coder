@@ -1,12 +1,13 @@
 let planetsArray = [];
 
 //Nodos
-const cardsContainer = document.querySelector(".cards-container");
-const templateCard = document.querySelector("#template-cards");
-const card = templateCard.content.querySelector("article");
+const cardsContainer = document.querySelector(".cards-container"),
+  templateCard = document.querySelector("#template-cards"),
+  card = templateCard.content.querySelector("article");
 
+//Render planetas
 const cardsRender = (array) => {
-  //Elimino todos los nodos y renderizo las cards
+  //Elimino todos los nodos y renderizo las cards de planetas
   cardsContainer.innerHTML = "";
   for (let item of array) {
     let cardClonada = card.cloneNode(true);
@@ -20,12 +21,12 @@ const cardsRender = (array) => {
   }
 };
 
-//Buscador
+//Buscador de planetas
+let searchText = "";
 const searchOpen = (e) => {
   document.querySelector(".search-btn").classList.add("hide");
   document.querySelector(".search-input").classList.remove("hide");
 };
-let searchText = "";
 const search = (e) => {
   for (const item of buttonsFilters) item.classList.remove("text-primary");
   searchText = e.target.value.toLowerCase();
@@ -68,7 +69,6 @@ const addFilter = (i) => {
       filtered.sort(order);
       break;
   }
-
   cardsRender(filtered);
 };
 const buttonsFilters = document.querySelectorAll(".addFilter");
@@ -80,23 +80,15 @@ const filtersOpen = () => {
   document.querySelector(".search-input").classList.add("hide");
   document.querySelector(".search-btn").classList.remove("hide");
 };
-
 document.querySelector("nav .cart-close button").addEventListener("click", filtersOpen);
 document.querySelector(".menu button").addEventListener("click", filtersOpen);
 
-//Fetch
+//Base de datos con fetch
 async function getData() {
-  try {
-    let res = await fetch("./assets/data.json"),
-      json = await res.json();
-    planetsArray = json;
-    cardsRender(planetsArray);
-    if (!res.ok) throw { status: res.status, statusText: res.statusText };
-  } catch (err) {
-    console.log(err);
-    let message = err.statusText || "Ocurrió un error";
-    cardsContainer.innerHTML = `Error ${err.status}: ${message}`;
-  }
+  let res = await fetch("./assets/data.json"),
+    json = await res.json();
+  planetsArray = json;
+  cardsRender(planetsArray);
 }
 
 //Inicio

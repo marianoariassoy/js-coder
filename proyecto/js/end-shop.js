@@ -21,11 +21,10 @@ cartArray.sort(order);
 //Agrego a La Tierra en primer lugar donde comienza el itinerario
 cartArray.unshift({ name: "Earth", image: "earth.png", price: 0, distance: 0, cantidad: 1 });
 
-//Renderizo el carrito
+//Render del carrito
 const cartRender = () => {
   //Elimino todos los nodos
   cartContainer.innerHTML = "";
-
   cartArray.forEach((item) => {
     let cardClonada = itemCart.cloneNode(true);
     cardClonada.querySelector("img").src = `./assets/${item.image}`;
@@ -48,7 +47,7 @@ const cartRender = () => {
   document.querySelector(".travel-txt").innerHTML = `${text} <br><strong>Total distance: ${distance}. million Km.</strong> `;
 };
 
-//Calcular Montos
+//Calcular montos finales
 const calcularMontos = () => {
   //Subtotal
   let subTotal = 0;
@@ -73,10 +72,10 @@ const calcularMontos = () => {
 
 //Modal final
 const modalOpen = () => {
-  let error = false;
-  let name = document.querySelector("#name").value;
-  let email = document.querySelector("#email").value;
-  let card = document.querySelector("#card").value;
+  let error = false,
+    name = document.querySelector("#name").value,
+    email = document.querySelector("#email").value,
+    card = document.querySelector("#card").value;
 
   if (!name) {
     error = true;
@@ -106,7 +105,6 @@ const modalOpen = () => {
       },
     }).showToast();
   }
-
   if (!error) {
     localStorage.removeItem("cart");
     document.querySelector("#modal-overlay").classList.add("flex");

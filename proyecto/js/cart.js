@@ -49,7 +49,7 @@ const productEdit = (num, op) => {
   cartRender();
 };
 
-//Renderizo el carrito
+//Render del carrito
 const cartRender = () => {
   //Elimino todos los nodos
   cartContainer.innerHTML = "";
@@ -78,7 +78,7 @@ const cartRender = () => {
   localStorage.setItem("cart", JSON.stringify(cartArray));
 };
 
-//Anre y cierra el panel del carrito
+//Anbre y cierra el panel del carrito
 const cartOpen = () => document.querySelector("aside").classList.add("cartOpen");
 const cartClose = () => document.querySelector("aside").classList.remove("cartOpen");
 document.querySelector(".cart-open button").addEventListener("click", cartOpen);
