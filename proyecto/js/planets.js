@@ -15,13 +15,24 @@ const cardsRender = (array) => {
     cardClonada.querySelector(".card-title").innerText = item.name;
     cardClonada.querySelector(".card-description").innerText = ` Distance: ${item.distance} million km.\nType: ${item.type}\nRadius: ${item.radius} million km.\n${moons}`;
     cardClonada.querySelector(".card-price").innerText = `$${item.price} M.`;
-    cardClonada.querySelector("button").addEventListener("click", () => agregarProducto(item.id));
+    cardClonada.querySelector("button").addEventListener("click", () => addPlanet(item.id));
     cardsContainer.appendChild(cardClonada);
   }
 };
 
+//Buscador
+let searchText = "";
+const search = (e) => {
+  for (const item of buttonsFilters) item.classList.remove("text-primary");
+  searchText = e.target.value.toLowerCase();
+  filtered = planetsArray.filter((item) => item.name.toLowerCase().includes(searchText));
+  cardsRender(filtered);
+};
+document.querySelector("nav input").addEventListener("keyup", search);
+
 //Filtros
 const addFilter = (i) => {
+  filtersOpen();
   for (const item of buttonsFilters) item.classList.remove("text-primary");
   buttonsFilters[i].classList.add("text-primary");
   let filtered;
@@ -55,10 +66,10 @@ const addFilter = (i) => {
 
   cardsRender(filtered);
 };
-
 const buttonsFilters = document.querySelectorAll(".addFilter");
 for (let i = 0; i < buttonsFilters.length; i++) buttonsFilters[i].addEventListener("click", () => addFilter(i));
 
+//Fetch
 async function getData() {
   try {
     let res = await fetch("./assets/data.json"),

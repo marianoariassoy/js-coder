@@ -5,18 +5,12 @@ header {
   display: grid;
   align-items: center;
   grid-template-columns: 1fr 4fr 1fr;
-  height: 80px;
   padding: 0 var(--metric-box-spacing);
 }
 .header-logo {
   padding: 0 1rem;
 }
-nav ul li {
-  display: inline;
-  margin: 0 20px;
-  font-size: 1rem;
-  margin-bottom: 1rem;
-}
+
 .content {
   line-height: 1.4;
 }
@@ -65,7 +59,9 @@ footer {
 .btn-delete:hover {
   color: white;
 }
-aside {
+
+aside,
+nav {
   position: relative;
   position: fixed;
   display: flex;
@@ -77,6 +73,14 @@ aside {
   min-height: 100vh;
   color: black;
   transition: all 0.5s ease;
+}
+nav {
+  font-variation-settings: "wght" 600;
+  right: auto;
+  left: -920px;
+}
+nav ul li {
+  margin-bottom: 1rem;
 }
 .cart-empty {
   flex: 4;
@@ -150,6 +154,10 @@ aside a:hover {
 }
 .cartOpen {
   right: 0;
+  transition: all 0.5s ease;
+}
+.filtersOpen {
+  left: 0;
   transition: all 0.5s ease;
 }
 

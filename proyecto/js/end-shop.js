@@ -71,7 +71,7 @@ const calcularMontos = () => {
   document.querySelector("#precio-final").innerHTML = `$${costofinal} M.<br><small>Pay in 12 parts of $${costoFinalCoutas} M.</small>`;
 };
 
-//Modal
+//Modal final
 const modalOpen = () => {
   let error = false;
   let name = document.querySelector("#name").value;

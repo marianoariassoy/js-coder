@@ -22,26 +22,30 @@
   <body>
     <header>
       <div class="menu">
-        <button class="btn-close text-white text-primary-hover">FILTERS</button>
+        <button class="btn-close text-white text-primary-hover">SEARCH</button>
       </div>
       <div class="header-logo text-center">
         <img src="./assets/nasa.png" width="130" alt="Logo NASA" class="nasa-logo" />
         <h1 class="logo">Travel to space 🚀</h1>
-        <nav class="hide">
-          <ul>
-            <li><a href="#" class="text-white addFilter text-primary">All</a></li>
-            <li><a href="#" class="text-white addFilter">Terrestrials</a></li>
-            <li><a href="#" class="text-white addFilter">Gas Giants</a></li>
-            <li><a href="#" class="text-white addFilter">With Moons</a></li>
-            <li><a href="#" class="text-white addFilter">Smalls</a></li>
-            <li><a href="#" class="text-white addFilter">Bigs</a></li>
-          </ul>
-        </nav>
       </div>
       <div class="cart cart-open text-right">
         <button class="btn-close text-white text-primary-hover">CART</button>
       </div>
     </header>
+    <nav class="bg-secondary p-2">
+      <div class="cart-close text-right mb-2">
+        <button class="btn-close">CLOSE</button>
+      </div>
+      <ul class="mb-2">
+        <li><a href="#" class="text-black addFilter text-primary">All</a></li>
+        <li><a href="#" class="text-black addFilter">Terrestrials</a></li>
+        <li><a href="#" class="text-black addFilter">Gas Giants</a></li>
+        <li><a href="#" class="text-black addFilter">With Moons</a></li>
+        <li><a href="#" class="text-black addFilter">Smalls</a></li>
+        <li><a href="#" class="text-black addFilter">Bigs</a></li>
+      </ul>
+      <input type="text" name="input-search" id="input-search" placeholder="Search for names" />
+    </nav>
     <main>
       <section class="container">
         <div class="cards-container w-100 mb-2">
