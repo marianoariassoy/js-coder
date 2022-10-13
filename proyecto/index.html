@@ -22,7 +22,7 @@
   <body>
     <header>
       <div class="menu">
-        <button class="btn-close text-white text-primary-hover">SEARCH</button>
+        <button class="btn-close text-white text-primary-hover">FILTERS</button>
       </div>
       <div class="header-logo text-center">
         <img src="./assets/nasa.png" width="130" alt="Logo NASA" class="nasa-logo" />
@@ -44,8 +44,11 @@
         <li><a href="#" class="text-black addFilter">Smalls</a></li>
         <li><a href="#" class="text-black addFilter">Bigs</a></li>
       </ul>
-      <input type="text" name="input-search" id="input-search" placeholder="Search for names" />
     </nav>
+    <div class="search">
+      <a href="#" class="text-white search-btn"><i class="fa-solid fa-search"></i></a>
+      <input type="text" name="search" placeholder="Search planets" class="search-input hide" />
+    </div>
     <main>
       <section class="container">
         <div class="cards-container w-100 mb-2">

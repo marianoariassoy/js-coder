@@ -78,16 +78,12 @@ const cartRender = () => {
   localStorage.setItem("cart", JSON.stringify(cartArray));
 };
 
-//Abrir y cerrar el carrito y los filtros
+//Anre y cierra el panel del carrito
 const cartOpen = () => document.querySelector("aside").classList.add("cartOpen");
 const cartClose = () => document.querySelector("aside").classList.remove("cartOpen");
-const filtersOpen = () => document.querySelector("nav").classList.toggle("filtersOpen");
-
 document.querySelector(".cart-open button").addEventListener("click", cartOpen);
 document.querySelector("aside .cart-close button").addEventListener("click", cartClose);
 document.querySelector(".btn-continue").addEventListener("click", cartClose);
-document.querySelector("nav .cart-close button").addEventListener("click", filtersOpen);
-document.querySelector(".menu button").addEventListener("click", filtersOpen);
 
 //Incio
 cartRender();

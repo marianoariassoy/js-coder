@@ -59,7 +59,16 @@ footer {
 .btn-delete:hover {
   color: white;
 }
-
+.search {
+  position: fixed;
+  top: 60px;
+  padding: 0 var(--metric-box-spacing);
+}
+.search input {
+  background-color: transparent;
+  border: 1px solid white;
+  width: 260px;
+}
 aside,
 nav {
   position: relative;
@@ -73,6 +82,7 @@ nav {
   min-height: 100vh;
   color: black;
   transition: all 0.5s ease;
+  z-index: 1000;
 }
 nav {
   font-variation-settings: "wght" 600;

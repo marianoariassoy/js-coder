@@ -21,6 +21,10 @@ const cardsRender = (array) => {
 };
 
 //Buscador
+const searchOpen = (e) => {
+  document.querySelector(".search-btn").classList.add("hide");
+  document.querySelector(".search-input").classList.remove("hide");
+};
 let searchText = "";
 const search = (e) => {
   for (const item of buttonsFilters) item.classList.remove("text-primary");
@@ -28,7 +32,8 @@ const search = (e) => {
   filtered = planetsArray.filter((item) => item.name.toLowerCase().includes(searchText));
   cardsRender(filtered);
 };
-document.querySelector("nav input").addEventListener("keyup", search);
+document.querySelector(".search-input").addEventListener("keyup", search);
+document.querySelector(".search-btn").addEventListener("click", searchOpen);
 
 //Filtros
 const addFilter = (i) => {
@@ -68,6 +73,16 @@ const addFilter = (i) => {
 };
 const buttonsFilters = document.querySelectorAll(".addFilter");
 for (let i = 0; i < buttonsFilters.length; i++) buttonsFilters[i].addEventListener("click", () => addFilter(i));
+
+//Abre y cierra el panel de filtros
+const filtersOpen = () => {
+  document.querySelector("nav").classList.toggle("filtersOpen");
+  document.querySelector(".search-input").classList.add("hide");
+  document.querySelector(".search-btn").classList.remove("hide");
+};
+
+document.querySelector("nav .cart-close button").addEventListener("click", filtersOpen);
+document.querySelector(".menu button").addEventListener("click", filtersOpen);
 
 //Fetch
 async function getData() {
