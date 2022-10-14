@@ -52,22 +52,22 @@ const calcularMontos = () => {
   //Subtotal
   let subTotal = 0;
   for (const item of cartArray) subTotal += item.price * item.cantidad;
-  document.querySelector("#precio-subtotal").innerText = `$${subTotal} M.`;
+  document.querySelector("#precio-subtotal").innerText = `$${subTotal} M`;
   //Envio
   if (subTotal <= freeShiping) {
     costoEnvio = 500;
-    document.querySelector("#precio-shiping").innerHTML = `$${costoEnvio} M.<br><small>Free shipping from $${freeShiping} M.</small>`;
+    document.querySelector("#precio-shiping").innerHTML = `$${costoEnvio} M<br><small>Free shipping from $${freeShiping} M.</small>`;
   } else {
     costoEnvio = 0;
     document.querySelector("#precio-shiping").innerHTML = `$${costoEnvio} <br><small>Free shipping</small>`;
   }
   //Impuestos
   let ivaFinal = Math.round(subTotal * iva);
-  document.querySelector("#precio-iva").innerHTML = `$${ivaFinal} M.`;
+  document.querySelector("#precio-iva").innerHTML = `$${ivaFinal} M`;
   //Precio final
   let costofinal = subTotal + costoEnvio + ivaFinal;
   let costoFinalCoutas = Math.round(costofinal / 12);
-  document.querySelector("#precio-final").innerHTML = `$${costofinal} M.<br><small>Pay in 12 parts of $${costoFinalCoutas} M.</small>`;
+  document.querySelector("#precio-final").innerHTML = `$${costofinal} M<br><small>Pay in 12 parts of $${costoFinalCoutas} M</small>`;
 };
 
 //Modal final

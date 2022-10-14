@@ -15,7 +15,7 @@ const cardsRender = (array) => {
     cardClonada.querySelector("img").src = `./assets/${item.image}`;
     cardClonada.querySelector(".card-title").innerText = item.name;
     cardClonada.querySelector(".card-description").innerText = ` Distance: ${item.distance} million km.\nType: ${item.type}\nRadius: ${item.radius} million km.\n${moons}`;
-    cardClonada.querySelector(".card-price").innerText = `$${item.price} M.`;
+    cardClonada.querySelector(".card-price").innerText = `$${item.price} M`;
     cardClonada.querySelector("button").addEventListener("click", () => addPlanet(item.id));
     cardsContainer.appendChild(cardClonada);
   }

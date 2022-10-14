@@ -59,7 +59,7 @@ const cartRender = () => {
     cartArray.forEach(function (item, index) {
       let cardClonada = itemCart.cloneNode(true);
       cardClonada.querySelector("img").src = `./assets/${item.image}`;
-      cardClonada.querySelector(".cart-title").innerHTML = `<strong>${item.name}</strong><br>$${item.price * item.cantidad} M.`;
+      cardClonada.querySelector(".cart-title").innerHTML = `<strong>${item.name}</strong><br>$${item.price * item.cantidad} M`;
       cardClonada.querySelector(".cart-amount").innerHTML = item.cantidad;
       cartContainer.appendChild(cardClonada);
       //Escuchadores
