@@ -44,7 +44,7 @@ const cartRender = () => {
   } else {
     text = `Your journey begins on ${cartArray[0].name} and ends on ${cartArray[1].name}.`;
   }
-  document.querySelector(".travel-txt").innerHTML = `${text} <br><strong>Total distance: ${distance}. million Km.</strong> `;
+  document.querySelector(".travel-txt").innerHTML = `${text} <br><span class="distance-txt">Total distance: ${distance} million Km.</span> `;
 };
 
 //Calcular montos finales

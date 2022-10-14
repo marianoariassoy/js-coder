@@ -225,3 +225,8 @@ input {
   width: 80%;
   max-width: 600px;
 }
+.distance-txt {
+  font-variation-settings: "wght" 700;
+  text-decoration: underline;
+  text-decoration-thickness: 3px;
+}
