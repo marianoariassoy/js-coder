@@ -67,7 +67,7 @@ const calcularMontos = () => {
   //Precio final
   let costofinal = subTotal + costoEnvio + ivaFinal;
   let costoFinalCoutas = Math.round(costofinal / 12);
-  document.querySelector("#precio-final").innerHTML = `$${costofinal} M<br><small>Pay in 12 parts of $${costoFinalCoutas} M</small>`;
+  document.querySelector("#precio-final").innerHTML = `$${costofinal} M<br><small>or $${costoFinalCoutas} M for 12 months</small>`;
 };
 
 //Modal final
